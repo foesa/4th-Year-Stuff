@@ -14,9 +14,9 @@
 (i)
 id:18--18-18
 \begin{center}
-\includegraphics[scale=0.3]{x1vx2.jpg}
+\includegraphics[scale=0.5]{x1vx2.jpg}
 \end{center}
-The data seems to have a sort of quadratic shape at the top with a clear distinction between the data. To derive the plot, I read in the data and placed it in a dataframe. From there I seperated the data into 2 seperate dataframes based on the value of the classification and plotted the graph with different markers for each frame. 
+The data seems to have a sort of quadratic shape at the top with a clear distinction between the data. The data isn't evenly distributed, with the majority of data points belonging to the -1 class.
 \begin{verbatim}
 f = open("ass2.txt", "r")
 start = True
@@ -34,11 +34,12 @@ df = pd.DataFrame(data)
 df1 = df[df['z'] == -1]
 df2 = df[df['z'] != -1]
 \end{verbatim}
+To derive the plot, I read in the data and placed it in a dataframe. From there I seperated the data into 2 seperate dataframes based on the value of the classification and plotted the graph with different markers for each frame. 
+\\\\
 (ii)
  \(\theta_0 = -2.01562941, \theta_1 =  -0.11408452 \) \(\theta_2 =  5.85191207\)
 \\
-From training the model, we can see that y = +1 when \(-2.01562941 -0.11408452x_1 + 5.85191207x_2 > 0\) and y = -1 when \(< 0\)
-\\
+From training the model, we can see that Z = +1 when \(-2.01562941 -0.11408452x_1 + 5.85191207x_2 > 0\) and Z = -1 when \(< 0\). 
 \begin{verbatim}
 def loger():
     df1 = df[df['z'] == -1]
@@ -49,9 +50,10 @@ def loger():
     print(model.intercept_, model.coef_)
     ys = model.predict(x)
 \end{verbatim}
+I created a function to do the logistic regression, using some of the code we got in class. I called Scikit-Learn to get the Logistic Regression model and fitted the data that was already in the dataframe I created in part (i). From there I printed out the values reported to me by the model to get the parameter values. \\
 (iii)
 \begin{center}
-\includegraphics[scale=0.3]{x1vx2pred.jpg}
+\includegraphics[scale=0.5]{x1vx2pred.jpg}
 \end{center}
 To obtain the decision boundary, I needed to get the correct value of \(x_2\) given \(x_1\). To achieve this, I just needed to solve the following equation: \[x_2 = -(\theta_0 + \theta_1*x_1)/\theta_2\] which gave me the correct value of y as I have the other parameters from my model. I just picked values of x between 1 and -1 using linspace and then plotted the line through those points to generate my decision boundary. I split the predictions into 2 separate dataframes to plot them also. 
 \begin{verbatim}
@@ -64,10 +66,10 @@ To obtain the decision boundary, I needed to get the correct value of \(x_2\) gi
     y = -(model.intercept_ + model.coef_[0][0] * x_vals) / model.coef_[0][1]
 \end{verbatim}
 (iv)
-The training data and the predictions made by the mode are accurate for the majority of cases. But as we can see in the above graph, the decision boundary is a straight line bisecting the classifications, instead of a more quadratic curve that we would expect. This causes us to have the errors in prediction like we can see towards the centre of the graph with the blue dots. Our data is clearly not linearly separable. 
+The training data and the predictions made by the mode are accurate for the majority of cases. But as we can see in the above graph, the decision boundary is a straight line bisecting the classifications, instead of a more quadratic curve that we would expect. This causes us to have the errors in prediction like we can see towards the centre of the graph with the blue dots. Our data is clearly not linearly separable without doing some additional feature engineering. 
 \section{B}
 (i)
-\\ I ran values of C ranging from 0.001 to 1000, with a logarithmic scale using np.geomspace() so each value is of the same log in difference. 
+\\ I created an additional dataframe just containing the values of x1 and x2, then created a list of models to hold the different models I was about to generate. From there I created a list of C values in the range .001 - 1000 using np.geomspace that would increment each value of C logarithmically increasing. From there I used a for loop to iterate through my C values and created a model for each value of C and added each model to my list of models. 
 \begin{verbatim}
 df1 = df[df['z'] == -1]
 df2 = df[df['z'] != -1]
@@ -105,7 +107,7 @@ C & \(\theta_0\) & \(\theta_1\) & \(\theta_2\) \\
 \caption{C values and parameters}
 \end{center}
 \end{table}
-From the table we can see our parameters changing as our values of C change also. As our values of C change, we can see that the y intercept changes drastically, with it getting smaller as our value of C increases. 
+From the table we can see our parameters changing as our values of C change also. As our values of C change, we can see that the y intercept changes drastically, with it getting smaller as our value of C increases. The values in our table seem to diifer by much less as our c value increases in size, this could possibly be due to the SVM becoming more strict in terms of classification. 
 \\
 (ii)
 \begin{figure}[h]
@@ -142,8 +144,8 @@ Changing the value of C influences the decision boundary by changing the slope a
 
 \section{C}
 (i)
-To get the square of each of the features, I selected each of the individual rows with features and multiplied the value in each row by itself to get the square. I then added this as a new column in the dataframe.\\
-The values reported to me by the model:  \(\theta_0 = 0.2388532  \theta_1 =-0.59851887  \) \(\theta_2 =  21.11277526 \) \( \theta_3= -26.29209894\) \(\theta_4 = 5.87851124 \). These values give me the formula for some sort of quadratic line which would match the shape of the decision boundary I would plot for the data.
+To get the square of each of the features, I selected each of the individual rows with features and multiplied the value in each row by itself to get the square. I then added these values and the original values to a new dataframe called squared. Using this dataframe I fit a Logistic Regression classifier using scikit-learn. I then printed out the values of the parameters\\
+The values reported to me by the model:  \(\theta_0 = 0.2388532  \theta_1 =-0.59851887  \) \(\theta_2 =  21.11277526 \) \( \theta_3= -26.29209894\) \(\theta_4 = 5.87851124 \). These values give me the formula for some sort of quadratic line which would match the shape of the decision boundary I would plot for the data. In comparison to the linear equation I got earlier, the parameter values are rather different, with my intercept being much larger and my values for theta 1 and 2 being larger also. 
 \begin{verbatim}
 plt.clf()
     df['x3'] = df['x']**2
@@ -159,9 +161,9 @@ plt.clf()
 (ii)
 \begin{figure}[h]
 \centering
-\subfloat[Training vs Predictions]{{\includegraphics[scale=0.3]{sqr.jpg}}}
+\subfloat[Training vs Predictions]{{\includegraphics[scale=0.35]{sqr.jpg}}}
 \qquad
-\subfloat[Training data]{{\includegraphics[scale=0.3]{x1vx2.jpg}}}
+\subfloat[Training data]{{\includegraphics[scale=0.35]{x1vx2.jpg}}}
 \end{figure}
 When we add the squared features to the dataset and add this data to our model, we can see our predictions become much more accurate for each classification of data. The decision boundary would be quadratic in shape roughly, so squaring the features gives us a quadratic model also. While the model isn't perfect, overall it fits the data much more accurately than our linear model. 
 \begin{verbatim}
