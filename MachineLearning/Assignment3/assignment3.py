@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.model_selection import KFold, cross_val_score
+from sklearn.model_selection import KFold
 from sklearn.metrics import mean_squared_error
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -73,13 +73,13 @@ def cross_val():
     k_vals = [2, 5, 10, 25, 50, 100]
     mean_list = []
     variance_list = []
+    p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
+    features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
     for k in k_vals:
         error_list = []
         kf = KFold(n_splits=k)
-        for train, test in kf.split(df):
-            # print('Train', train)
-            # print('Test', test)
-            x_train, x_test = df.loc[train, ['x1', 'x2']], df.loc[test, ['x1', 'x2']]
+        for train, test in kf.split(features):
+            x_train, x_test = features.loc[train], features.loc[test]
             y_train, y_test = df.loc[train, 'label'], df.loc[test, 'label']
             model = Lasso(alpha=1)
             model.fit(x_train, y_train)
@@ -98,17 +98,18 @@ def cross_val():
     plt.title('Folds vs Mean Error')
     plt.show()
 
+
 def c_pick():
-    c_vals = np.linspace(0.00000001,0.4)
+    p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
+    features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
+    c_vals = np.linspace(0.00000001, 0.1, num=10)
     mean_list = []
     std_list = []
     kf = KFold(n_splits=10)
     for i in c_vals:
         error_list = []
         for train, test in kf.split(df):
-            # print('Train', train)
-            # print('Test', test)
-            x_train, x_test = df.loc[train, ['x1', 'x2']], df.loc[test, ['x1', 'x2']]
+            x_train, x_test = features.loc[train], features.loc[test]
             y_train, y_test = df.loc[train, 'label'], df.loc[test, 'label']
             model = Lasso(alpha=i)
             model.fit(x_train, y_train)
@@ -121,12 +122,10 @@ def c_pick():
         std_list.append(std)
     plt.clf()
     plt.errorbar(c_vals, mean_list, yerr=std_list)
-    plt.xlabel('Folds')
+    plt.xlabel('C Value')
     plt.ylabel('Mean Error')
     plt.title('Folds vs Mean Error')
     plt.show()
-
-
 
 
 c_pick()
