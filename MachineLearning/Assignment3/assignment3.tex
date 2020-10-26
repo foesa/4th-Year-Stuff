@@ -1,0 +1,183 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\geometry{margin=0.5in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Week 3 Assignment}
+\author{Efeosa Eguavoen - 17324649}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{(i) - id:2--2-2}
+\subsection{a}
+\includegraphics[scale=0.5]{3Ddata.jpg}
+\\
+To generate the graph, I first read in the data and placed it into a dataframe. I then used ax.scatter to generate the 3d graph and added labels using built in functions to label my axes. 
+\begin{verbatim}
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(df['x1'], df['x2'], df['label'])
+ax.set_xlabel('x1')
+ax.set_ylabel('x2')
+ax.set_zlabel('Target')
+\end{verbatim}
+The graph seems to have some sort of curve shape, as the data points towards the front of the graph go up in the centre then down, indicating some sort of quadratic shape roughly. 
+
+\subsection{b}
+As the value of C increases the parameter values get smaller and smaller also, eventually becoming 0 when C is large enough. 
+
+To get the features, I used PolynomialFeatures fitted to the data given to us, to the power of 5. I then placed this into a dataframe called features, with each feature labelled accordingly like in the photo below.
+\begin{verbatim}
+ p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
+    features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
+\end{verbatim}
+After this I then had a list of C vals between 0 and 1 as 1 was where I found my parameter values to all equal 0, so I used a range of values between 0 and 1 as my C values. From there I used a for loop to iterate through my values of C and created a model for each value of C, fitting the data and added each model to my list of models. 
+\begin{verbatim}
+models = []
+    c_vals = [1e-7, 1e-4, 1e-3, 1e-2, 1e-1, 1]
+    for s in c_vals:
+        model = Lasso(alpha=s)
+        model.fit(features, df['label'])
+        models.append((model, s))
+\end{verbatim}
+\subsection{C}
+\begin{figure}[h]
+\centering
+\subfloat[C = 1e-07]{{\includegraphics[width=5cm]{p1.jpg}}}
+\qquad
+\subfloat[C = 0.0001]{{\includegraphics[width=5cm]{p2.jpg}}}
+\qquad
+\subfloat[C = 0.001]{{\includegraphics[width=5cm]{p3.jpg}}}
+\qquad
+\subfloat[C = .01]{{\includegraphics[width=5cm]{p4.jpg}}}
+\qquad
+\subfloat[C = .1]{{\includegraphics[width=5cm]{p5.jpg}}}
+\qquad
+\subfloat[C = 1]{{\includegraphics[width=5cm]{p6.jpg}}}
+\end{figure}
+ Red Dots: Training Data, Blue curves: Predictions (Adding a legend to a 3d plot isn't natively supported).\\
+ From the above plots we can see that changing the value of C influences hugely our predictions. This is due to the fact that Lasso regression uses a L1 penalty that sets more and more of our parameters to 0 as we increase the value of C. This can be seen as the shapes of our graph change a lot, for example when C = 1e-07 the shape of the predictions is quite wild and fits the data closely, while when C = 1 it doesn't fit the data at all, as all our parameters are set to 0.
+ \\
+ To generate these graphs, I created a list of points for x1 and x2, then I used np.meshgrid to generate a grid of points. From there I flattened the arrays to 1D and stacked them using np.ravel and np.vstack respectively. I got the transpose of this array which then acted as my base array to generate features from using Polynomial features.
+ \begin{verbatim}
+x1vals = y1vals = np.array(np.linspace(-2, 2))
+x, y = np.meshgrid(x1vals, y1vals)
+positions = np.vstack([x.ravel(), y.ravel()])
+xtest = (np.array(positions)).T
+pdata = pd.DataFrame(xtest, columns=['x1', 'x2'])
+p1 = PolynomialFeatures(5).fit(pdata[['x1', 'x2']])
+mesh_features = pd.DataFrame(p1.transform(pdata[['x1', 'x2']]), columns=p.get_feature_names(pdata.columns))
+ \end{verbatim}
+ From here I iterated over my list of models and made predictions on the dataframe of data points and plotted each graph of predictions vs the training data.
+ \begin{verbatim}
+     for i in models:
+        pred = i[0].predict(mesh_features)
+        pred = pred.reshape(x.shape)
+ \end{verbatim}
+ \subsection{D}
+ Overfitting refers to a model that matches the training data too closely, to the point where it's capturing all the noise and randomness in the graph. Underfitting refers to a model that doesn't capture the trends of the data at all and can't make accurate predictions of the data whatsoever. The parameter C enables us to manage between overfitting and underfitting our data by setting more of our parameter values to 0 in terms of Lasso Regression. This enables us to ignore certain parameters that aren't as important in capturing the general trend in the data. We can see this in the graph where C = 0.001 compared to when C = 0.0001. More of our parameters have been set to 0 or values very close to 0, which in turn enables us to capture the general shape of the data without overfitting like when C = 0.0001. When this penalty is too aggressive though we can get an underfit, like when C = .1 vs C = 0.01
+ 
+\section{(ii)} 
+\subsection{A}
+\includegraphics[scale=0.4]{fold.jpg}
+\\
+When selecting the number of folds, there's a trade off between the amount of computational time we can use and the level of bias we're willing to accept. Having higher values of K enables us to have less bias overall as the training set better represents the data and the variance increases as the training sets become more similar. But having too high a value of K becomes an issue as the test set might become too small which might not properly represent the data. For this dataset, I think using a value of K = 10 is appropriate as the data set isn't that large and using larger values of K reduces or test set too much to represent the data well. Using 5 increases the mean error slightly also.
+\\ To get the above graph, I set up a list of K values and a list for mean errors and their associated variances.  I then iterated over this list of K values to generate different splits.
+\begin{verbatim}
+k_vals = [2, 5, 10, 25, 50, 100]
+mean_list = []
+variance_list = []
+    for k in k_vals:
+        error_list = []
+        kf = KFold(n_splits=k)
+\end{verbatim}
+I then split the training data into 2 sets, a training set and a test set. Following this I trained the model and got the mean squared error and appended this to the error list. Once I had all the errors, I got the mean and variance and appended them to their respective lists. I then plotted after.
+ \begin{verbatim}
+         for train, test in kf.split(features):
+            x_train, x_test = features.loc[train], features.loc[test]
+            y_train, y_test = df.loc[train, 'label'], df.loc[test, 'label']
+            model = Lasso(alpha=1)
+            model.fit(x_train.values, y_train.values)
+            pred = model.predict(x_test)
+            error_list.append(mean_squared_error(y_test.values, pred))
+        error_list = np.array(error_list)
+        mean = error_list.mean()
+        mean_list.append(mean)
+        var = error_list.var()
+        variance_list.append(var)
+ \end{verbatim}
+\subsection{B}
+\begin{figure}[h]
+\subfloat[0 \(<\) C \(<\) 1]{{\includegraphics[width=8cm]{c1.jpg}}}
+\qquad
+\subfloat[0 \(<\) C \(<\) 0.1]{{\includegraphics[width=8cm]{c2.jpg}}}
+I used 10-fold Cross validation for the above plots as I established it to work slightly better than 5 fold in an earlier section. For choosing values of C, I first started with mapping values between 0 and 1 like in the plot(a) as this spanned all values of C that kept my parameters non 0. From there I then reduced the range to scan values of C as I could see that towards the left of graph(a) was where my minimum was. From there I generated graph(b) which scans values in a much smaller range to find the optimum value of C.
+\\
+To generate the graphs, I used the same code as for using different values of K, I just iterated over my list of C values instead of iterating through a list of values of K.
+\begin{verbatim}
+c_vals = np.linspace(0.00000001, 0.1)
+    mean_list = []
+    std_list = []
+    kf = KFold(n_splits=10)
+    for i in c_vals:
+\end{verbatim}
+
+\subsection{C}
+Based on the above graph, I'd recommend a value of C around 0.002 as the values of C seem to take a slight dip at the start around C = 0.02 then just increases from there. At this point, my mean square error is at it's lowest meaning the accuracy of my predictions is at it's best here as the parameters of my algorithm are the most optimised they can be and are as accurate to the trends in the data as possible.
+\subsection{D}
+
+\end{figure}
+\end{document}

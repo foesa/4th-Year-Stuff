@@ -22,7 +22,7 @@ for i in f:
 df = pd.DataFrame(data)
 
 
-def graps():
+def graphs():
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     ax.scatter(df['x1'], df['x2'], df['label'])
@@ -46,6 +46,9 @@ def Lassor():
         model = Lasso(alpha=s)
         model.fit(features, df['label'])
         models.append((model, s))
+        print(f' C = {s}, P1= {model.intercept_} , P2 {model.coef_[1]}, P3 = {model.coef_[2]} ,P4= {model.coef_[3]} , P5= {model.coef_[4]} , P6= {model.coef_[5]} , P7= {model.coef_[6]} , P8= {model.coef_[7]}'
+              f', P9= {model.coef_[8]} , P10= {model.coef_[9]} , P11= {model.coef_[10]} , P12= {model.coef_[11]} , P13 {model.coef_[12]} , P14=0 {model.coef_[13]} , P15= {model.coef_[14]} , P16 {model.coef_[5]}'
+              f', P17= {model.coef_[16]} , P18= {model.coef_[17]} , P19= {model.coef_[18]} , P20= {model.coef_[19]} , P21 {model.coef_[20]} \n')
 
     x1vals = y1vals = np.array(np.linspace(-2, 2))
     x, y = np.meshgrid(x1vals, y1vals)
@@ -60,8 +63,8 @@ def Lassor():
         fig = plt.figure()
         plt.clf()
         ax = fig.add_subplot(111, projection='3d')
-        ax.scatter(df['x1'], df['x2'], df['label'], marker='+', color='red', s=100)
-        ax.plot_surface(x, y, pred, alpha=0.5)
+        ax.scatter(df['x1'], df['x2'], df['label'], marker='+', s=100, label='Training Data')
+        ax.plot_surface(x, y, pred, alpha=0.5, label='Predictions')
         ax.set_xlabel('x1')
         ax.set_ylabel('x2')
         ax.set_zlabel('Target')
@@ -82,9 +85,9 @@ def cross_val():
             x_train, x_test = features.loc[train], features.loc[test]
             y_train, y_test = df.loc[train, 'label'], df.loc[test, 'label']
             model = Lasso(alpha=1)
-            model.fit(x_train, y_train)
+            model.fit(x_train.values, y_train.values)
             pred = model.predict(x_test)
-            error_list.append(mean_squared_error(y_test, pred))
+            error_list.append(mean_squared_error(y_test.values, pred))
         error_list = np.array(error_list)
         mean = error_list.mean()
         mean_list.append(mean)
@@ -102,7 +105,7 @@ def cross_val():
 def c_pick():
     p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
     features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
-    c_vals = np.linspace(0.00000001, 0.1, num=10)
+    c_vals = np.linspace(0.00000001, 0.01)
     mean_list = []
     std_list = []
     kf = KFold(n_splits=10)
@@ -124,8 +127,8 @@ def c_pick():
     plt.errorbar(c_vals, mean_list, yerr=std_list)
     plt.xlabel('C Value')
     plt.ylabel('Mean Error')
-    plt.title('Folds vs Mean Error')
+    plt.title('C vs Mean Error')
     plt.show()
 
 
-c_pick()
+Lassor()
