@@ -41,16 +41,20 @@ def Lassor():
     p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
     features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
     models = []
-    c_vals = [1e-7, 1e-4, 1e-3, 1e-2, 1e-1, 1]
+    c_vals = [1e-7,.0001,.001,.01,.1,1]
     for s in c_vals:
         model = Lasso(alpha=s)
         model.fit(features, df['label'])
         models.append((model, s))
-        print(f' C = {s}, P1= {model.intercept_} , P2 {model.coef_[1]}, P3 = {model.coef_[2]} ,P4= {model.coef_[3]} , P5= {model.coef_[4]} , P6= {model.coef_[5]} , P7= {model.coef_[6]} , P8= {model.coef_[7]}'
-              f', P9= {model.coef_[8]} , P10= {model.coef_[9]} , P11= {model.coef_[10]} , P12= {model.coef_[11]} , P13 {model.coef_[12]} , P14=0 {model.coef_[13]} , P15= {model.coef_[14]} , P16 {model.coef_[5]}'
-              f', P17= {model.coef_[16]} , P18= {model.coef_[17]} , P19= {model.coef_[18]} , P20= {model.coef_[19]} , P21 {model.coef_[20]} \n')
+        print(f' C = {s}, P1= {round(model.intercept_,5)} , P2 {round(model.coef_[1],5)}, P3 = {round(model.coef_[2],5)} '
+              f',P4= {round(model.coef_[3],5)} , P5= {round(model.coef_[4],5)} , P6= {round(model.coef_[5],5)} , P7= {round(model.coef_[6],5)} , P8= {round(model.coef_[7],5)}'
+              f', P9= {round(model.coef_[8],5)} , P10= {round(model.coef_[9],5)} , P11= {round(model.coef_[10],5)} , '
+              f'P12= {round(model.coef_[11],5)} , P13 {round(model.coef_[12],5)} , P14=0 {round(model.coef_[13],5)} , '
+              f'P15= {round(model.coef_[14],5)} , P16 {round(model.coef_[15],5)} '
+              f', P17= {round(model.coef_[16],5)} , P18= {round(model.coef_[17],5)} , P19= {round(model.coef_[18],5)} ,'
+              f' P20= {round(model.coef_[19],5)} , P21 {round(model.coef_[20],5)} \\\\\\\\')
 
-    x1vals = y1vals = np.array(np.linspace(-2, 2))
+    x1vals = y1vals = np.array(np.linspace(-3, 3))
     x, y = np.meshgrid(x1vals, y1vals)
     positions = np.vstack([x.ravel(), y.ravel()])
     xtest = (np.array(positions)).T
@@ -63,7 +67,7 @@ def Lassor():
         fig = plt.figure()
         plt.clf()
         ax = fig.add_subplot(111, projection='3d')
-        ax.scatter(df['x1'], df['x2'], df['label'], marker='+', s=100, label='Training Data')
+        ax.scatter(df['x1'], df['x2'], df['label'], color='red', marker='+', s=100, label='Training Data')
         ax.plot_surface(x, y, pred, alpha=0.5, label='Predictions')
         ax.set_xlabel('x1')
         ax.set_ylabel('x2')
@@ -105,7 +109,7 @@ def cross_val():
 def c_pick():
     p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
     features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
-    c_vals = np.linspace(0.00000001, 0.01)
+    c_vals = np.linspace(0.1, 5)
     mean_list = []
     std_list = []
     kf = KFold(n_splits=10)
@@ -114,7 +118,7 @@ def c_pick():
         for train, test in kf.split(df):
             x_train, x_test = features.loc[train], features.loc[test]
             y_train, y_test = df.loc[train, 'label'], df.loc[test, 'label']
-            model = Lasso(alpha=i)
+            model = Ridge(alpha=i)
             model.fit(x_train, y_train)
             pred = model.predict(x_test)
             error_list.append(mean_squared_error(y_test, pred))
@@ -131,4 +135,4 @@ def c_pick():
     plt.show()
 
 
-Lassor()
+c_pick()
