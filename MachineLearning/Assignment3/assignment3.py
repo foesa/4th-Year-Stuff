@@ -42,19 +42,12 @@ def Lassor():
     features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
     models = []
     print(features.columns)
-    c_vals = [1e-7, .0001, .001, .01, .1, 1]
+    c_vals = [0.1, 1, 10, 100, 1000, 10000]
+
     for s in c_vals:
-        model = Lasso(alpha=s)
+        model = Ridge(alpha=s)
         model.fit(features, df['label'])
         models.append((model, s))
-        print(f' C = {s}, \(\\theta_0\)= {round(model.intercept_, 5)} , \(x1\)= {round(model.coef_[1], 5)} '
-              f',\(x2\)= {round(model.coef_[2], 5)} , \(x1^2\)= {round(model.coef_[3], 5)} , \(x1 x2\)= {round(model.coef_[4], 5)} , '
-              f'\(x2^2\)= {round(model.coef_[5], 5)} , \(x1^3\)= {round(model.coef_[6], 5)}'
-              f', \(x1^2 x2\)= {round(model.coef_[7], 5)} , \(x1 x2^2\)= {round(model.coef_[8], 5)} , \(x2^3\)= {round(model.coef_[9], 5)} , '
-              f'\(x1^4\)= {round(model.coef_[10], 5)} , \(x1^3 x2\) {round(model.coef_[11], 5)} , \(x1^2 x2^2\)= {round(model.coef_[12], 5)} , '
-              f'\(x1 x2^3\)= {round(model.coef_[13], 5)} , \(x2^4\)= {round(model.coef_[14], 5)} '
-              f', \(x1^5\)= {round(model.coef_[15], 5)} , \(x1^4 x2\)= {round(model.coef_[16], 5)} , \(x1^3 x2^2\)= {round(model.coef_[17], 5)} ,'
-              f' \(x1^2 x2^3\)= {round(model.coef_[18], 5)} , \(x1 x2^4\)= {round(model.coef_[19], 5)} , \(x2^5\)={round(model.coef_[20])} \\\\\\\\')
 
     x1vals = y1vals = np.array(np.linspace(-3, 3))
     x, y = np.meshgrid(x1vals, y1vals)
@@ -63,6 +56,7 @@ def Lassor():
     pdata = pd.DataFrame(xtest, columns=['x1', 'x2'])
     p1 = PolynomialFeatures(5).fit(pdata[['x1', 'x2']])
     mesh_features = pd.DataFrame(p1.transform(pdata[['x1', 'x2']]), columns=p.get_feature_names(pdata.columns))
+
     for i in models:
         pred = i[0].predict(mesh_features)
         pred = pred.reshape(x.shape)
@@ -84,6 +78,7 @@ def cross_val():
     variance_list = []
     p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
     features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
+
     for k in k_vals:
         error_list = []
         kf = KFold(n_splits=k)
@@ -94,12 +89,14 @@ def cross_val():
             model.fit(x_train.values, y_train.values)
             pred = model.predict(x_test)
             error_list.append(mean_squared_error(y_test.values, pred))
+
         error_list = np.array(error_list)
         mean = error_list.mean()
         mean_list.append(mean)
         var = error_list.var()
         variance_list.append(var)
         print(mean, var)
+
     plt.clf()
     plt.errorbar(k_vals, mean_list, yerr=variance_list)
     plt.xlabel('Folds')
@@ -115,6 +112,7 @@ def c_pick():
     mean_list = []
     std_list = []
     kf = KFold(n_splits=10)
+
     for i in c_vals:
         error_list = []
         for train, test in kf.split(df):
@@ -124,11 +122,13 @@ def c_pick():
             model.fit(x_train, y_train)
             pred = model.predict(x_test)
             error_list.append(mean_squared_error(y_test, pred))
+
         error_list = np.array(error_list)
         mean = error_list.mean()
         mean_list.append(mean)
         std = error_list.std()
         std_list.append(std)
+
     plt.clf()
     plt.errorbar(c_vals, mean_list, yerr=std_list)
     plt.xlabel('C Value')
