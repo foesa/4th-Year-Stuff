@@ -41,18 +41,20 @@ def Lassor():
     p = PolynomialFeatures(5).fit(df[['x1', 'x2']])
     features = pd.DataFrame(p.transform(df[['x1', 'x2']]), columns=p.get_feature_names(df.columns))
     models = []
-    c_vals = [1e-7,.0001,.001,.01,.1,1]
+    print(features.columns)
+    c_vals = [1e-7, .0001, .001, .01, .1, 1]
     for s in c_vals:
         model = Lasso(alpha=s)
         model.fit(features, df['label'])
         models.append((model, s))
-        print(f' C = {s}, P1= {round(model.intercept_,5)} , P2 {round(model.coef_[1],5)}, P3 = {round(model.coef_[2],5)} '
-              f',P4= {round(model.coef_[3],5)} , P5= {round(model.coef_[4],5)} , P6= {round(model.coef_[5],5)} , P7= {round(model.coef_[6],5)} , P8= {round(model.coef_[7],5)}'
-              f', P9= {round(model.coef_[8],5)} , P10= {round(model.coef_[9],5)} , P11= {round(model.coef_[10],5)} , '
-              f'P12= {round(model.coef_[11],5)} , P13 {round(model.coef_[12],5)} , P14=0 {round(model.coef_[13],5)} , '
-              f'P15= {round(model.coef_[14],5)} , P16 {round(model.coef_[15],5)} '
-              f', P17= {round(model.coef_[16],5)} , P18= {round(model.coef_[17],5)} , P19= {round(model.coef_[18],5)} ,'
-              f' P20= {round(model.coef_[19],5)} , P21 {round(model.coef_[20],5)} \\\\\\\\')
+        print(f' C = {s}, \(\\theta_0\)= {round(model.intercept_, 5)} , \(x1\)= {round(model.coef_[1], 5)} '
+              f',\(x2\)= {round(model.coef_[2], 5)} , \(x1^2\)= {round(model.coef_[3], 5)} , \(x1 x2\)= {round(model.coef_[4], 5)} , '
+              f'\(x2^2\)= {round(model.coef_[5], 5)} , \(x1^3\)= {round(model.coef_[6], 5)}'
+              f', \(x1^2 x2\)= {round(model.coef_[7], 5)} , \(x1 x2^2\)= {round(model.coef_[8], 5)} , \(x2^3\)= {round(model.coef_[9], 5)} , '
+              f'\(x1^4\)= {round(model.coef_[10], 5)} , \(x1^3 x2\) {round(model.coef_[11], 5)} , \(x1^2 x2^2\)= {round(model.coef_[12], 5)} , '
+              f'\(x1 x2^3\)= {round(model.coef_[13], 5)} , \(x2^4\)= {round(model.coef_[14], 5)} '
+              f', \(x1^5\)= {round(model.coef_[15], 5)} , \(x1^4 x2\)= {round(model.coef_[16], 5)} , \(x1^3 x2^2\)= {round(model.coef_[17], 5)} ,'
+              f' \(x1^2 x2^3\)= {round(model.coef_[18], 5)} , \(x1 x2^4\)= {round(model.coef_[19], 5)} , \(x2^5\)={round(model.coef_[20])} \\\\\\\\')
 
     x1vals = y1vals = np.array(np.linspace(-3, 3))
     x, y = np.meshgrid(x1vals, y1vals)
@@ -135,4 +137,4 @@ def c_pick():
     plt.show()
 
 
-c_pick()
+Lassor()
