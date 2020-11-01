@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.5)  30 OCT 2020 07:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.5)  30 OCT 2020 08:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -588,7 +588,7 @@ Here is how much of TeX's memory you used:
  20134 multiletter control sequences out of 15000+600000
  539483 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,10n,49p,930b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,10n,49p,978b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/a
@@ -599,7 +599,7 @@ s/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmr9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt10.pfb>
-Output written on assignment3.pdf (11 pages, 1828016 bytes).
+Output written on assignment3.pdf (11 pages, 1828074 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
