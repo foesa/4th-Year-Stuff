@@ -37,7 +37,6 @@ def graphs():
 
 def L1Logger():
     q_vals = [f for f in range(1, 7)]
-    data_list = []
     mean_list = []
     variance_list = []
     for i in q_vals:
@@ -78,7 +77,7 @@ def L1Logger():
     plt.errorbar(q_vals, mean_list, variance_list, label='Mean Error Line', color='red')
     plt.hlines(y=0, xmin=1, xmax=6, label='Training Data')
     plt.xlabel('Q value')
-    plt.ylabel('Test Data')
+    plt.ylabel('Mean Error')
     plt.legend()
     plt.show()
 
@@ -145,4 +144,4 @@ def Knn():
     plt.show()
 
 
-Knn()
+L1Logger()
