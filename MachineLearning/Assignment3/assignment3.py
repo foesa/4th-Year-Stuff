@@ -118,7 +118,7 @@ def c_pick():
         for train, test in kf.split(df):
             x_train, x_test = features.loc[train], features.loc[test]
             y_train, y_test = df.loc[train, 'label'], df.loc[test, 'label']
-            model = Ridge(alpha=i)
+            model = Ridge(alpha=1/(2*i))
             model.fit(x_train, y_train)
             pred = model.predict(x_test)
             error_list.append(mean_squared_error(y_test, pred))
@@ -137,4 +137,4 @@ def c_pick():
     plt.show()
 
 
-Lassor()
+c_pick()
