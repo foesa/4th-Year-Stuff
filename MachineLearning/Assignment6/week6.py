@@ -10,7 +10,7 @@ data = {'x': [-1, 0, 1], 'y': [0, 1, 0]}
 df = pd.DataFrame(data)
 gamma = 25
 gamma_Vals = [0, 1, 5, 10, 25]
-c_vals = np.linspace(10, 100, num=10)
+c_vals = [.1, 1, 10, 100, 1000]
 grid = np.linspace(start=-3, stop=3, num=100).reshape(-1, 1)
 
 
@@ -59,15 +59,17 @@ def kernelRidge():
             model = KernelRidge(alpha=1 / (2 * c_vals[i]), kernel='rbf', gamma=gamma)
             model.fit(np.array(df['x']).reshape(-1, 1), df['y'])
             ys = model.predict(grid)
-            plt.clf()
-            plt.scatter(df['x'], df['y'], color='red', marker='+', label='Training Data')
-            plt.plot(grid, ys, color='blue', label='Predictions')
-            plt.xlabel("Input X")
-            plt.ylabel("Output Y")
-            plt.title(f'Predictions vs Training data, Gamma={gamma}, C={c_vals[i]}')
-            plt.legend()
-            plt.show()
-            print(model.dual_coef_)
+            # plt.clf()
+            # plt.scatter(df['x'], df['y'], color='red', marker='+', label='Training Data')
+            # plt.plot(grid, ys, color='blue', label='Predictions')
+            # plt.xlabel("Input X")
+            # plt.ylabel("Output Y")
+            # plt.title(f'Predictions vs Training data, Gamma={gamma}, C={c_vals[i]}')
+            # plt.legend()
+            # plt.savefig(f'kr{i}{s}.png', dpi=300, bbox_inches='tight')
+            # plt.show()
+            print(
+                f'\(\\thetha_0 {round(model.dual_coef_[0], 9)}, thetha_1 {round(model.dual_coef_[1], 9)} , thetha_2 {round(model.dual_coef_[2], 9)}\)')
 
 
 def hyper_pick_knn():
@@ -97,6 +99,7 @@ def hyper_pick_knn():
     plt.legend()
     plt.show()
 
+
 def hyper_pick_ridge_gamma():
     alt_gamma_vals = np.linspace(0, 25, num=25)
     dataframe = read_data()
@@ -110,7 +113,7 @@ def hyper_pick_ridge_gamma():
         for train, test in kf.split(dataframe):
             x_train, x_test = dataframe.loc[train, 'x'], dataframe.loc[test, 'x']
             y_train, y_test = dataframe.loc[train, 'y'], dataframe.loc[test, 'y']
-            model = KernelRidge(alpha=1/(2*i), kernel='rbf', gamma=4.16667)
+            model = KernelRidge(alpha=1 / (2 * i), kernel='rbf', gamma=4.16667)
             model.fit(np.array(x_train).reshape(-1, 1), y_train)
             ys = model.predict(np.array(x_test).reshape(-1, 1))
             error_list.append(mean_squared_error(y_test.values, ys))
@@ -119,7 +122,8 @@ def hyper_pick_ridge_gamma():
         variance_list.append(error_list.var())
 
     plt.clf()
-    plt.errorbar(list(map(lambda x: 1/(2*x), c_vals)), mean_list, variance_list, label="Mean Error", color='red', ecolor='black')
+    plt.errorbar(list(map(lambda x: 1 / (2 * x), c_vals)), mean_list, variance_list, label="Mean Error", color='red',
+                 ecolor='black')
     plt.xlabel('Gamma Value')
     plt.ylabel('Mean Error')
     plt.legend()
@@ -127,7 +131,8 @@ def hyper_pick_ridge_gamma():
     print(c_vals)
     print(mean_list)
 
-#Best Gamma = 4.17
+
+# Best Gamma = 4.17
 # C = 30 best value of C
 
-hyper_pick_ridge_gamma()
+kernelRidge()
