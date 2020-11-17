@@ -1,12 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.23)  17 NOV 2020 00:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.5)  17 NOV 2020 23:30
 entering extended mode
-**./week6.tex
-(week6.tex
-LaTeX2e <2020-02-02> patch level 3
-L3 programming layer <2020-02-21>
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**week6.tex
+(./week6.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-03-06>
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size11.clo"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
 \c@part=\count167
@@ -20,27 +22,24 @@ File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen134
-) ("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.st
-y"
-Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks14
-\inpenc@posthook=\toks15
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
-y"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
+\KV@toks@=\toks17
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty
-"
+(/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- ("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty
-"
-Package: iftex 2019/11/07 v1.0c TeX engine tests
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
 \Gm@cnth=\count175
 \Gm@cntv=\count176
@@ -53,36 +52,29 @@ Package: iftex 2019/11/07 v1.0c TeX engine tests
 \Gm@layoutheight=\dimen140
 \Gm@layouthoffset=\dimen141
 \Gm@layoutvoffset=\dimen142
-\Gm@dimlist=\toks17
-
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-cfg"))
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
-sty"
+\Gm@dimlist=\toks18
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
-sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
-ics.cfg"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
-x.def"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen143
 \Gin@req@width=\dimen144
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/booktabs\booktabs.
-sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen145
 \lightrulewidth=\dimen146
@@ -102,41 +94,37 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count181
 \@thisrulewidth=\dimen157
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \col@sep=\dimen158
 \ar@mcellbox=\box45
 \extrarowheight=\dimen159
-\NC@list=\toks18
+\NC@list=\toks19
 \extratabsurround=\skip49
 \backup@length=\skip50
 \ar@cellbox=\box46
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/paralist\paralist.
-sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/paralist/paralist.sty
 Package: paralist 2017/01/22 v2.7 Extended list environments
 \pltopsep=\skip51
 \plpartopsep=\skip52
 \plitemsep=\skip53
 \plparsep=\skip54
-\pl@lab=\toks19
+\pl@lab=\toks20
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.sty
-"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks20
-\verbatim@line=\toks21
+\every@verbatim=\toks21
+\verbatim@line=\toks22
 \verbatim@in@stream=\read2
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfig\subfig.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.st
-y"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.s
-ty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
 \captionmargin=\dimen160
@@ -165,8 +153,7 @@ Package caption Info: Standard document class detected.
 \sf@top=\skip58
 \sf@bottom=\skip59
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyhdr\fancyhdr.
-sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip60
@@ -179,8 +166,7 @@ s
 \f@nch@O@olf=\skip67
 \f@nch@O@orf=\skip68
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/sectsty\sectsty.st
-y"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/sectsty/sectsty.sty
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
 
@@ -192,18 +178,14 @@ LaTeX Warning: Command \underbar  has changed.
 LaTeX Warning: Command \underline  has changed.
                Check if current package is valid.
 
-)
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tocbibind\tocbibin
-d.sty"
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has section divisions on input line 50.
 
 
 Package tocbibind Note: Using section or other style headings.
 
-)
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tocloft\tocloft.st
-y"
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 51.
 \cftparskip=\skip69
@@ -244,12 +226,12 @@ Package tocloft Info: The document has section divisions on input line 51.
 \cftsubtabindent=\skip104
 \cftsubtabnumwidth=\skip105
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
-d-pdfmode.def"
-File: l3backend-pdfmode.def 2020-02-21 L3 backend support: PDF mode
+(/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count191
 \l__pdf_internal_box=\box47
-) (week6.aux)
+)
+(./week6.aux)
 \openout1 = `week6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
@@ -301,51 +283,40 @@ LaTeX Font Info:    ... okay on input line 61.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
-df.mkii"
+(/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count192
 \scratchdimen=\dimen168
 \scratchbox=\box48
 \nofMPsegments=\count193
 \nofMParguments=\count194
-\everyMPshowfont=\toks22
+\everyMPshowfont=\toks23
 \MPscratchCnt=\count195
 \MPscratchDim=\dimen169
 \MPnumerator=\count196
 \makeMPintoPDFobject=\count197
-\everyMPtoPDFconversion=\toks23
-)
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epsto
-pdf-base.sty"
+\everyMPtoPDFconversion=\toks24
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwar
-err.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/grfext\grfext.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/grfext/grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvdefinekeys\kvd
-efinekeys.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-))
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvoption
-s.sty"
+)) (/usr/local/texlive/2020/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.
-sty"
+(/usr/local/texlive/2020/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvsetk
-eys.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 ))
-("C:\Users\legua\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexc
-mds.sty"
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -358,7 +329,11 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
-)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -393,32 +368,33 @@ File: kn5.png Graphic file (type png)
 <use kn5.png>
 Package pdftex.def Info: kn5.png  used on input line 76.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
- [1
 
-{C:/Users/legua/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./kn1.png (
-PNG copy)> <./kn2.png (PNG copy)> <./kn3.png (PNG copy)> <./kn4.png (PNG copy)>
- <./kn5.png (PNG copy)>]
-<kr00.png, id=15, 410.0118pt x 327.8649pt>
+[1
+
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./kn1.p
+ng (PNG copy)> <./kn2.png (PNG copy)> <./kn3.png (PNG copy)> <./kn4.png (PNG co
+py)> <./kn5.png (PNG copy)>]
+<kr00.png, id=16, 410.0118pt x 327.8649pt>
 File: kr00.png Graphic file (type png)
 <use kr00.png>
 Package pdftex.def Info: kr00.png  used on input line 89.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr01.png, id=17, 410.0118pt x 327.8649pt>
+<kr01.png, id=18, 410.0118pt x 327.8649pt>
 File: kr01.png Graphic file (type png)
 <use kr01.png>
 Package pdftex.def Info: kr01.png  used on input line 91.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr02.png, id=18, 410.0118pt x 327.8649pt>
+<kr02.png, id=19, 410.0118pt x 327.8649pt>
 File: kr02.png Graphic file (type png)
 <use kr02.png>
 Package pdftex.def Info: kr02.png  used on input line 93.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr03.png, id=19, 410.0118pt x 327.8649pt>
+<kr03.png, id=20, 410.0118pt x 327.8649pt>
 File: kr03.png Graphic file (type png)
 <use kr03.png>
 Package pdftex.def Info: kr03.png  used on input line 95.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr04.png, id=20, 410.0118pt x 327.8649pt>
+<kr04.png, id=21, 410.0118pt x 327.8649pt>
 File: kr04.png Graphic file (type png)
 <use kr04.png>
 Package pdftex.def Info: kr04.png  used on input line 97.
@@ -434,27 +410,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--104
 
  []
 
-<kr10.png, id=21, 410.0118pt x 327.8649pt>
+<kr10.png, id=22, 410.0118pt x 327.8649pt>
 File: kr10.png Graphic file (type png)
 <use kr10.png>
 Package pdftex.def Info: kr10.png  used on input line 107.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr11.png, id=22, 410.0118pt x 327.8649pt>
+<kr11.png, id=23, 410.0118pt x 327.8649pt>
 File: kr11.png Graphic file (type png)
 <use kr11.png>
 Package pdftex.def Info: kr11.png  used on input line 109.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr12.png, id=23, 410.0118pt x 327.8649pt>
+<kr12.png, id=24, 410.0118pt x 327.8649pt>
 File: kr12.png Graphic file (type png)
 <use kr12.png>
 Package pdftex.def Info: kr12.png  used on input line 111.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr13.png, id=24, 410.0118pt x 327.8649pt>
+<kr13.png, id=25, 410.0118pt x 327.8649pt>
 File: kr13.png Graphic file (type png)
 <use kr13.png>
 Package pdftex.def Info: kr13.png  used on input line 113.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr14.png, id=25, 410.0118pt x 327.8649pt>
+<kr14.png, id=26, 410.0118pt x 327.8649pt>
 File: kr14.png Graphic file (type png)
 <use kr14.png>
 Package pdftex.def Info: kr14.png  used on input line 115.
@@ -467,27 +443,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--122
 
  []
 
-<kr20.png, id=26, 410.0118pt x 327.8649pt>
+<kr20.png, id=27, 410.0118pt x 327.8649pt>
 File: kr20.png Graphic file (type png)
 <use kr20.png>
 Package pdftex.def Info: kr20.png  used on input line 125.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr21.png, id=27, 418.2024pt x 327.8649pt>
+<kr21.png, id=28, 418.2024pt x 327.8649pt>
 File: kr21.png Graphic file (type png)
 <use kr21.png>
 Package pdftex.def Info: kr21.png  used on input line 127.
 (pdftex.def)             Requested size: 227.62204pt x 178.45518pt.
-<kr22.png, id=28, 410.0118pt x 327.8649pt>
+<kr22.png, id=29, 410.0118pt x 327.8649pt>
 File: kr22.png Graphic file (type png)
 <use kr22.png>
 Package pdftex.def Info: kr22.png  used on input line 129.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr23.png, id=29, 410.0118pt x 327.8649pt>
+<kr23.png, id=30, 410.0118pt x 327.8649pt>
 File: kr23.png Graphic file (type png)
 <use kr23.png>
 Package pdftex.def Info: kr23.png  used on input line 131.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr24.png, id=30, 410.0118pt x 327.8649pt>
+<kr24.png, id=31, 410.0118pt x 327.8649pt>
 File: kr24.png Graphic file (type png)
 <use kr24.png>
 Package pdftex.def Info: kr24.png  used on input line 133.
@@ -500,27 +476,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--140
 
  []
 
-<kr30.png, id=31, 410.0118pt x 327.8649pt>
+<kr30.png, id=32, 410.0118pt x 327.8649pt>
 File: kr30.png Graphic file (type png)
 <use kr30.png>
 Package pdftex.def Info: kr30.png  used on input line 143.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr31.png, id=32, 418.2024pt x 327.8649pt>
+<kr31.png, id=33, 418.2024pt x 327.8649pt>
 File: kr31.png Graphic file (type png)
 <use kr31.png>
 Package pdftex.def Info: kr31.png  used on input line 145.
 (pdftex.def)             Requested size: 227.62204pt x 178.45518pt.
-<kr32.png, id=33, 410.0118pt x 327.8649pt>
+<kr32.png, id=34, 410.0118pt x 327.8649pt>
 File: kr32.png Graphic file (type png)
 <use kr32.png>
 Package pdftex.def Info: kr32.png  used on input line 147.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr33.png, id=34, 410.0118pt x 327.8649pt>
+<kr33.png, id=35, 410.0118pt x 327.8649pt>
 File: kr33.png Graphic file (type png)
 <use kr33.png>
 Package pdftex.def Info: kr33.png  used on input line 149.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr34.png, id=35, 410.0118pt x 327.8649pt>
+<kr34.png, id=36, 410.0118pt x 327.8649pt>
 File: kr34.png Graphic file (type png)
 <use kr34.png>
 Package pdftex.def Info: kr34.png  used on input line 151.
@@ -533,27 +509,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 153--158
 
  []
 
-<kr40.png, id=36, 410.0118pt x 327.8649pt>
+<kr40.png, id=37, 410.0118pt x 327.8649pt>
 File: kr40.png Graphic file (type png)
 <use kr40.png>
 Package pdftex.def Info: kr40.png  used on input line 161.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr41.png, id=37, 418.2024pt x 327.8649pt>
+<kr41.png, id=38, 418.2024pt x 327.8649pt>
 File: kr41.png Graphic file (type png)
 <use kr41.png>
 Package pdftex.def Info: kr41.png  used on input line 163.
 (pdftex.def)             Requested size: 227.62204pt x 178.45518pt.
-<kr42.png, id=38, 410.0118pt x 327.8649pt>
+<kr42.png, id=39, 410.0118pt x 327.8649pt>
 File: kr42.png Graphic file (type png)
 <use kr42.png>
 Package pdftex.def Info: kr42.png  used on input line 165.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr43.png, id=39, 410.0118pt x 327.8649pt>
+<kr43.png, id=40, 410.0118pt x 327.8649pt>
 File: kr43.png Graphic file (type png)
 <use kr43.png>
 Package pdftex.def Info: kr43.png  used on input line 167.
 (pdftex.def)             Requested size: 227.62204pt x 182.0172pt.
-<kr44.png, id=40, 410.0118pt x 327.8649pt>
+<kr44.png, id=41, 410.0118pt x 327.8649pt>
 File: kr44.png Graphic file (type png)
 <use kr44.png>
 Package pdftex.def Info: kr44.png  used on input line 169.
@@ -572,28 +548,134 @@ Underfull \hbox (badness 10000) in paragraph at lines 171--176
 r31.png> <./kr32.png> <./kr33.png> <./kr34.png>] [7 <./kr40.png> <./kr41.png> <
 ./kr42.png> <./kr43.png> <./kr44.png>] [8
 
-] (week6.aux) ) 
+]
+<ks0.png, id=92, 408.8073pt x 327.8649pt>
+File: ks0.png Graphic file (type png)
+<use ks0.png>
+Package pdftex.def Info: ks0.png  used on input line 185.
+(pdftex.def)             Requested size: 227.62204pt x 182.5575pt.
+<ks1.png, id=93, 408.8073pt x 327.8649pt>
+File: ks1.png Graphic file (type png)
+<use ks1.png>
+Package pdftex.def Info: ks1.png  used on input line 187.
+(pdftex.def)             Requested size: 227.62204pt x 182.5575pt.
+<ks2.png, id=94, 408.8073pt x 327.8649pt>
+File: ks2.png Graphic file (type png)
+<use ks2.png>
+Package pdftex.def Info: ks2.png  used on input line 189.
+(pdftex.def)             Requested size: 227.62204pt x 182.5575pt.
+<ks3.png, id=95, 408.8073pt x 327.8649pt>
+File: ks3.png Graphic file (type png)
+<use ks3.png>
+Package pdftex.def Info: ks3.png  used on input line 191.
+(pdftex.def)             Requested size: 227.62204pt x 182.5575pt.
+<ks4.png, id=96, 408.8073pt x 327.8649pt>
+File: ks4.png Graphic file (type png)
+<use ks4.png>
+Package pdftex.def Info: ks4.png  used on input line 193.
+(pdftex.def)             Requested size: 227.62204pt x 182.5575pt.
+ [9
+
+ <./ks0.png> <./ks1.png> <./ks2.png> <./ks3.png> <./ks4.png>]
+<cr1.png, id=105, 642.4pt x 481.8pt>
+File: cr1.png Graphic file (type png)
+<use cr1.png>
+Package pdftex.def Info: cr1.png  used on input line 200.
+(pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
+<cr2.png, id=106, 642.4pt x 481.8pt>
+File: cr2.png Graphic file (type png)
+<use cr2.png>
+Package pdftex.def Info: cr2.png  used on input line 202.
+(pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
+<kz0.png, id=107, 408.8073pt x 327.8649pt>
+File: kz0.png Graphic file (type png)
+<use kz0.png>
+Package pdftex.def Info: kz0.png  used on input line 210.
+(pdftex.def)             Requested size: 245.28625pt x 196.72044pt.
+<kz1.png, id=108, 408.8073pt x 327.8649pt>
+File: kz1.png Graphic file (type png)
+<use kz1.png>
+Package pdftex.def Info: kz1.png  used on input line 212.
+(pdftex.def)             Requested size: 245.28625pt x 196.72044pt.
+<kz2.png, id=109, 408.8073pt x 327.8649pt>
+File: kz2.png Graphic file (type png)
+<use kz2.png>
+Package pdftex.def Info: kz2.png  used on input line 214.
+(pdftex.def)             Requested size: 245.28625pt x 196.72044pt.
+<kz3.png, id=110, 408.8073pt x 327.8649pt>
+File: kz3.png Graphic file (type png)
+<use kz3.png>
+Package pdftex.def Info: kz3.png  used on input line 216.
+(pdftex.def)             Requested size: 245.28625pt x 196.72044pt.
+<kz4.png, id=111, 408.8073pt x 327.8649pt>
+File: kz4.png Graphic file (type png)
+<use kz4.png>
+Package pdftex.def Info: kz4.png  used on input line 218.
+(pdftex.def)             Requested size: 245.28625pt x 196.72044pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 <./cr1.png (PNG copy)> <./cr2.png (PNG copy)>] [11 <./kz0.png> <./kz1.png> 
+<./kz2.png> <./kz3.png> <./kz4.png>]
+<kq1.png, id=123, 642.4pt x 481.8pt>
+File: kq1.png Graphic file (type png)
+<use kq1.png>
+Package pdftex.def Info: kq1.png  used on input line 225.
+(pdftex.def)             Requested size: 256.95544pt x 192.71658pt.
+<fk1.png, id=124, 642.4pt x 481.8pt>
+File: fk1.png Graphic file (type png)
+<use fk1.png>
+Package pdftex.def Info: fk1.png  used on input line 231.
+(pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
+<fk2.png, id=125, 642.4pt x 481.8pt>
+File: fk2.png Graphic file (type png)
+<use fk2.png>
+Package pdftex.def Info: fk2.png  used on input line 233.
+(pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--237
+
+ []
+
+[12
+
+ <./kq1.png (PNG copy)> <./fk1.png (PNG copy)> <./fk2.png (PNG copy)>]
+<knvkr.png, id=129, 642.4pt x 481.8pt>
+File: knvkr.png Graphic file (type png)
+<use knvkr.png>
+Package pdftex.def Info: knvkr.png  used on input line 240.
+(pdftex.def)             Requested size: 449.67694pt x 337.25769pt.
+
+[13
+
+ <./knvkr.png (PNG copy)>] (./week6.aux) ) 
 Here is how much of TeX's memory you used:
- 4382 strings out of 481545
- 70128 string characters out of 2913488
- 323343 words of memory out of 3000000
- 19564 multiletter control sequences out of 15000+200000
- 538702 words of font info for 45 fonts, out of 3000000 for 9000
+ 4468 strings out of 480608
+ 69480 string characters out of 5903630
+ 326295 words of memory out of 5000000
+ 20269 multiletter control sequences out of 15000+600000
+ 538702 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,10n,49p,1780b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/legua/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/legua/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/legua
-/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/
-Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r9.pfb><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmss12.pfb><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb>
-Output written on week6.pdf (8 pages, 1963467 bytes).
+ 50i,10n,49p,1777b,359s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2020/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb>
+Output written on week6.pdf (13 pages, 2831218 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
+ 161 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
