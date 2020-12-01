@@ -23,7 +23,8 @@ def conv_modeller():
 
     # the data, split between train and test sets
     (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
-    n = 5000
+    #change the below number to 5k,10k,20k,40k for (iii)
+    n = 40000
     x_train = x_train[1:n]
     y_train = y_train[1:n]
     # x_test=x_test[1:500]; y_test=y_test[1:500]
@@ -37,7 +38,18 @@ def conv_modeller():
     y_train = keras.utils.to_categorical(y_train, num_classes)
     y_test = keras.utils.to_categorical(y_test, num_classes)
 
-    flat_arr = x_train.flatten().reshape(4999,3072)
+    flat_arr = y_train.flatten()
+    # zero_count = 0
+    # one_count = 0
+    # for i in flat_arr:
+    #     if i == 0:
+    #         zero_count = zero_count +1
+    #     else:
+    #         one_count = one_count + 1
+    #
+    # zero_arr = np.random.randint(10, size=4999).reshape(-1,1)
+    # zero_arr = keras.utils.to_categorical(zero_arr, num_classes)
+    # flat_arr = x_train.flatten().reshape(4999,3072)
     use_saved_model = False
     if use_saved_model:
         model = keras.models.load_model("cifar.model")
@@ -71,6 +83,7 @@ def conv_modeller():
         plt.ylabel('loss');
         plt.xlabel('epoch')
         plt.legend(['train', 'val'], loc='upper left')
+        plt.savefig('40k.png')
         plt.show()
 
     preds = model.predict(x_train)
@@ -84,6 +97,10 @@ def conv_modeller():
     y_test1 = np.argmax(y_test, axis=1)
     print(classification_report(y_test1, y_pred))
     print(confusion_matrix(y_test1, y_pred))
+
+    # y_pred = np.argmax(zero_arr, axis=1)
+    # print(classification_report(y_train1, y_pred))
+    # print(confusion_matrix(y_train1, y_pred))
 
 
 def convolver(input_array, kernel):
