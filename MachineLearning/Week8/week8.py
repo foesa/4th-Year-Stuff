@@ -56,9 +56,11 @@ def conv_modeller(i):
     else:
         model = keras.Sequential()
         model.add(Conv2D(16, (3, 3), padding='same', input_shape=x_train.shape[1:], activation='relu'))
-        model.add(Conv2D(16, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        # model.add(Conv2D(16, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        model.add(MaxPooling2D((2,2), padding='same'))
         model.add(Conv2D(32, (3, 3), padding='same', activation='relu'))
-        model.add(Conv2D(32, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        model.add(MaxPooling2D((2,2), padding='same'))
+        # model.add(Conv2D(32, (3, 3), strides=(2, 2), padding='same', activation='relu'))
         model.add(Dropout(0.5))
         model.add(Flatten())
         model.add(Dense(num_classes, activation='softmax', kernel_regularizer=regularizers.l1(i)))
@@ -136,6 +138,8 @@ def convolver(input_array, kernel):
 # Image.fromarray(np.uint(output)).show()
 #
 # print(np.array_equal(convolver(r,k1)))
-s_vals = [0, 0.0001, 0.001, 0.01, 0.1, 1, 10]
-for i in s_vals:
-    conv_modeller(i)
+# s_vals = [0, 0.0001, 0.001, 0.01, 0.1, 1, 10]
+# for i in s_vals:
+#     conv_modeller(i)
+
+conv_modeller(i=0.001)
