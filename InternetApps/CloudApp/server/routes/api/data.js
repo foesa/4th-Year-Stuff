@@ -89,5 +89,37 @@ router.get('/delete/', async(req, res)=>{
         }
     });
 });
+
 // Query Databse
+router.post('/', async(req, res)=>{
+    console.log(req.body);
+    var docClient = new AWS.DynamoDB.DocumentClient();
+    let year = Number(req.body.year);
+    let title = req.body.title;
+
+    var params = {
+        KeyConditionExpression: '#yr = :year and begins_with(title, :title)',
+        ExpressionAttributeNames:{
+            "#yr": "year"
+        },
+        ExpressionAttributeValues: {
+            ':title': title,
+            ':year': year
+        },
+        TableName: 'Movies'
+    };
+
+    await docClient.query(params, function(err, data){
+        if (err) console.log("Unable to query. Error: ", JSON.stringify(err, null, 2));
+        else {
+            console.log("Query succeeded.");
+            data.Items.forEach(function(item) {
+                console.log(" -", item.year + ": " + item.title
+                + " ... " + item.info.genres
+                + " ... " + item.info.actors[0]);
+            });
+            res.send(data.Items);
+        }
+    });
+});
 module.exports = router;
