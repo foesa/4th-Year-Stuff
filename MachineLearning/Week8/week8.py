@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import sys
 
 
-def conv_modeller():
+def conv_modeller(i):
     plt.rc('font', size=18)
     plt.rcParams['figure.constrained_layout.use'] = True
 
@@ -23,8 +23,8 @@ def conv_modeller():
 
     # the data, split between train and test sets
     (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
-    #change the below number to 5k,10k,20k,40k for (iii)
-    n = 40000
+    # change the below number to 5k,10k,20k,40k for (iii)
+    n = 5000
     x_train = x_train[1:n]
     y_train = y_train[1:n]
     # x_test=x_test[1:500]; y_test=y_test[1:500]
@@ -61,7 +61,7 @@ def conv_modeller():
         model.add(Conv2D(32, (3, 3), strides=(2, 2), padding='same', activation='relu'))
         model.add(Dropout(0.5))
         model.add(Flatten())
-        model.add(Dense(num_classes, activation='softmax', kernel_regularizer=regularizers.l1(0.0001)))
+        model.add(Dense(num_classes, activation='softmax', kernel_regularizer=regularizers.l1(i)))
         model.compile(loss="categorical_crossentropy", optimizer='adam', metrics=["accuracy"])
         model.summary()
 
@@ -83,7 +83,7 @@ def conv_modeller():
         plt.ylabel('loss');
         plt.xlabel('epoch')
         plt.legend(['train', 'val'], loc='upper left')
-        plt.savefig('40k.png')
+
         plt.show()
 
     preds = model.predict(x_train)
@@ -122,6 +122,7 @@ def convolver(input_array, kernel):
         output = [out_arr[i:i + offset] for i in range(0, len(out_arr), offset)]
         return output
 
+
 # inp = [[1, 2, 3, 4, 5], [1, 3, 2, 3, 10], [3, 2, 1, 4, 5], [6, 1, 1, 2, 2], [3, 2, 1, 5, 4]]
 # kernel = [[1, 0, -1], [1, 0, -1], [1, 0, -1]]
 # k2 = [[0, -1, 0], [-1, 8, -1], [0, -1, 0]]
@@ -135,4 +136,6 @@ def convolver(input_array, kernel):
 # Image.fromarray(np.uint(output)).show()
 #
 # print(np.array_equal(convolver(r,k1)))
-conv_modeller()
+s_vals = [0, 0.0001, 0.001, 0.01, 0.1, 1, 10]
+for i in s_vals:
+    conv_modeller(i)
