@@ -24,7 +24,7 @@ def conv_modeller(i):
     # the data, split between train and test sets
     (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
     # change the below number to 5k,10k,20k,40k for (iii)
-    n = 5000
+    n = 40000
     x_train = x_train[1:n]
     y_train = y_train[1:n]
     # x_test=x_test[1:500]; y_test=y_test[1:500]
@@ -55,20 +55,30 @@ def conv_modeller(i):
         model = keras.models.load_model("cifar.model")
     else:
         model = keras.Sequential()
-        model.add(Conv2D(16, (3, 3), padding='same', input_shape=x_train.shape[1:], activation='relu'))
-        # model.add(Conv2D(16, (3, 3), strides=(2, 2), padding='same', activation='relu'))
-        model.add(MaxPooling2D((2,2), padding='same'))
+        # model.add(Conv2D(16, (3, 3), padding='same', input_shape=x_train.shape[1:], activation='relu'))
+        # # model.add(Conv2D(16, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        # model.add(MaxPooling2D((2, 2), padding='same'))
+        # model.add(Conv2D(32, (3, 3), padding='same', activation='relu'))
+        # model.add(MaxPooling2D((2, 2), padding='same'))
+        # # model.add(Conv2D(32, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        # model.add(Dropout(0.5))
+        # model.add(Flatten())
+        # model.add(Dense(num_classes, activation='softmax', kernel_regularizer=regularizers.l1(i)))
+
+        model.add(Conv2D(8, (3, 3), padding='same', input_shape=x_train.shape[1:], activation='relu'))
+        model.add(Conv2D(8, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        model.add(Conv2D(16, (3, 3), padding='same', activation='relu'))
+        model.add(Conv2D(16, (3, 3), strides=(2, 2), padding='same', activation='relu'))
         model.add(Conv2D(32, (3, 3), padding='same', activation='relu'))
-        model.add(MaxPooling2D((2,2), padding='same'))
-        # model.add(Conv2D(32, (3, 3), strides=(2, 2), padding='same', activation='relu'))
+        model.add(Conv2D(32, (3, 3), strides=(2, 2), padding='same', activation='relu'))
         model.add(Dropout(0.5))
         model.add(Flatten())
-        model.add(Dense(num_classes, activation='softmax', kernel_regularizer=regularizers.l1(i)))
+        model.add(Dense(num_classes, activation='softmax', kernel_regularizer=regularizers.l1(0.0001)))
         model.compile(loss="categorical_crossentropy", optimizer='adam', metrics=["accuracy"])
         model.summary()
 
         batch_size = 128
-        epochs = 20
+        epochs = 60
         history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
         model.save("cifar.model")
         plt.subplot(211)
@@ -125,21 +135,21 @@ def convolver(input_array, kernel):
         return output
 
 
-# inp = [[1, 2, 3, 4, 5], [1, 3, 2, 3, 10], [3, 2, 1, 4, 5], [6, 1, 1, 2, 2], [3, 2, 1, 5, 4]]
-# kernel = [[1, 0, -1], [1, 0, -1], [1, 0, -1]]
-# k2 = [[0, -1, 0], [-1, 8, -1], [0, -1, 0]]
-# print(convolver(inp, k2))
-# k1 = [[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]]
-#
-# im = Image.open('rsz_empty-pentagon.jpg')
-# rgb = np.array(im.convert('RGB'))
-# r = rgb[:, :, 0]
-# output = np.array(convolver(r, k2))
-# Image.fromarray(np.uint(output)).show()
+inp = [[1, 2, 3, 4, 5], [1, 3, 2, 3, 10], [3, 2, 1, 4, 5], [6, 1, 1, 2, 2], [3, 2, 1, 5, 4]]
+kernel = [[1, 0, -1], [1, 0, -1], [1, 0, -1]]
+k2 = [[0, -1, 0], [-1, 8, -1], [0, -1, 0]]
+print(convolver(inp, k2))
+k1 = [[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]]
+
+im = Image.open('rsz_empty-pentagon.jpg')
+rgb = np.array(im.convert('RGB'))
+r = rgb[:, :, 0]
+output = np.array(convolver(r, k2))
+Image.fromarray(np.uint(output)).show()
 #
 # print(np.array_equal(convolver(r,k1)))
 # s_vals = [0, 0.0001, 0.001, 0.01, 0.1, 1, 10]
 # for i in s_vals:
 #     conv_modeller(i)
 
-conv_modeller(i=0.001)
+# conv_modeller(i=0.001)
