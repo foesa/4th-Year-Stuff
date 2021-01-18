@@ -6,7 +6,7 @@ def read_file():
     X = []
     Y = []
     Z = []
-    with open('reviews.txt', encoding='utf8') as json_file:
+    with open('reviews_262.jl.txt', encoding='utf8') as json_file:
         translator = Translator()
         for i in json_file:
             data = json.loads(i)
