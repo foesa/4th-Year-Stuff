@@ -94,9 +94,21 @@ Finally I reshaped the output array into the shape that would be expected given 
         return output
 \end{verbatim}
 \subsection{B}
-Original Image: \includegraphics[scale=1]{rsz_empty-paragon.jpg}
+From the figures below, we can see that when we apply Kernel 1 to the original image, the colours become inverted and there's a line of black in the centre of the image. \\ Using Kernel 2, not much changes seemed to have occurred but the edges of teh image are now much less defined. The individual values of each pixel has changed to greater than 255 though.
+\begin{figure}[h]
+\centering
+\subfloat[Original]{{\includegraphics[width=8cm]{rsz_empty-pentagon.jpg}}}
+\qquad
+\subfloat[Kernel 1]{{\includegraphics[width=8cm]{k1.png}}}
+\qquad 
+\subfloat[Kernel 2]{{\includegraphics[width=8cm]{k2.png}}}
+\qquad
+\end{figure}
+
+\clearpage
 \section{ii}
 \subsection{A}
+The given model is comprised of 5 layers in total. \\ Layer 1 is a convolutional layer using a 3x3 kernel for convolution with 16 output channels.  It's an input layer that's using padding so the output is the same shape as the input.  \\ Layer 2 is another convolutional layer using a 3x3 matrix but this time it's using striding instead of normal convolution. Again this layer is using padding to produce an output the same shape as the input. \\ Layer 3 is the same as layer 1 expect it's got 32 output channels. \\ Layer 4 is the same as layer 2 expect it's using 32 output layers. \\ Layer 5 is a dense or Fully Connected layer. This layer is our output layer, with 10 output channels, corresponding to the number of classes.
 \subsection{B}
 \subsubsection{i}
 Keras says the model has 37,146 parameters.  The dense layer has the most parameters with 20,490 parameters.  This is because the dense layer is a fully connected layer with each output being a function of the weighted sum of all the inputs. Since this layer can have multiple outputs, it means the number of parameters that need to be learned here increases rather quickly.  It has n*m parameters with n being the length of the input vector and m being the number of output channels. The test data performs significantly worse then the training data in terms of accuracy.  Both classifiers don't perform particularly well,  but when compared to a random classifier, they both still perform significantly better.  I used a random classifier as my baseline to test if the model is actually working and learning the the data properly versus randomly selecting numbers.
@@ -161,5 +173,5 @@ model = keras.Sequential()
 When using max-pooling, the total number of parameters reported by keras is 25,578, with 20,490 of these parameters coming from our dense layer.  The time per step for this network is 5ms/step which is lower than the 7ms/step of the original network. This speedup does come at a cost though, the accuracy of our models is affected, with the accuracy of our network on the training data dropping to .55 from .60 but it doesn't seem to affect the test data, with the test data having a score of .49 using max-pooling while the original reported the exact same score.  The reason the training time has changed is due to reducing the computational load. Max pooling essentially reduces the size of the output of the convolutional layers which in turn reduces the number of parameters in the network hence reducing the load. This is why we've less parameters in our model in comparison to our original model.
 \subsection{D}
 To achieve over 70\% accuracy using the given architecture for the Convolutional network, I had to increase the number of epochs by a factor of 3, essentially tripling the time required to train it.  Adding more layers affects the network in difference ways. \\\\In regards to  prediction performance,  adding more layers doesn't necessarily mean better performance.  If the individual layers are thinner,  we don't get a performance uplift because overall we've less parameters to train on so our performance is also limited.  In this network we've got a total of 23,314 parameters as compared to the over 30,000 parameters in our original network.
-\\\\In terms of over/under fitting,  adding more layers can lead to over-fitting as we're extracting too many features from the dataset, which can lead to false positives.  \\\\ In terms of the amount of training data and time taken to trade,  I had to use the 40K dataset and even then it took 3x as long to train the data to get over 70\% accuracy.  Adding more layers again doesn't guarantee we can use less data and train for less time overall.  It depends on how well the layers can extract data from the dataset so that we can train for less time overall and need less data. 
+\\\\In terms of over/under fitting,  adding more layers can lead to over-fitting as we're extracting too many features from the dataset, which can lead to false positives.  \\\\ In terms of the amount of training data and time taken to trade,  I had to use the 40K dataset and even then it took 3x as long to train the data to get over 70\% accuracy.  The individual step time was 2.6s.  Adding more layers again doesn't guarantee we can use less data and train for less time overall.  It depends on how well the layers can extract data from the dataset so that we can train for less time overall and need less data. 
 \end{document}

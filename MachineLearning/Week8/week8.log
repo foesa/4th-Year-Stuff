@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.5)  7 DEC 2020 19:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.5)  7 DEC 2020 20:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -343,136 +343,140 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 62.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 62.
+<rsz_empty-pentagon.jpg, id=1, 200.75pt x 200.75pt>
+File: rsz_empty-pentagon.jpg Graphic file (type jpg)
+<use rsz_empty-pentagon.jpg>
+Package pdftex.def Info: rsz_empty-pentagon.jpg  used on input line 100.
+(pdftex.def)             Requested size: 227.62204pt x 227.63821pt.
+<k1.png, id=2, 152.36925pt x 148.1535pt>
+File: k1.png Graphic file (type png)
+<use k1.png>
+Package pdftex.def Info: k1.png  used on input line 102.
+(pdftex.def)             Requested size: 227.62204pt x 221.33675pt.
+<k2.png, id=4, 148.75575pt x 149.96025pt>
+File: k2.png Graphic file (type png)
+<use k2.png>
+Package pdftex.def Info: k2.png  used on input line 104.
+(pdftex.def)             Requested size: 227.62204pt x 229.47273pt.
 
 
-LaTeX Warning: File `rsz_empty-paragon.jpg' not found on input line 97.
-
-
-! Package pdftex.def Error: File `rsz_empty-paragon.jpg' not found: using draft
- setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97 ...degraphics[scale=1]{rsz_empty-paragon.jpg}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--106
-
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<5k.png, id=11, 642.4pt x 481.8pt>
+[2 <./rsz_empty-pentagon.jpg> <./k1.png> <./k2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 114--118
+
+ []
+
+<5k.png, id=21, 642.4pt x 481.8pt>
 File: 5k.png Graphic file (type png)
 <use 5k.png>
-Package pdftex.def Info: 5k.png  used on input line 114.
+Package pdftex.def Info: 5k.png  used on input line 126.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<10k.png, id=12, 642.4pt x 481.8pt>
+<10k.png, id=22, 642.4pt x 481.8pt>
 File: 10k.png Graphic file (type png)
 <use 10k.png>
-Package pdftex.def Info: 10k.png  used on input line 116.
+Package pdftex.def Info: 10k.png  used on input line 128.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<20k.png, id=13, 642.4pt x 481.8pt>
+<20k.png, id=23, 642.4pt x 481.8pt>
 File: 20k.png Graphic file (type png)
 <use 20k.png>
-Package pdftex.def Info: 20k.png  used on input line 118.
+Package pdftex.def Info: 20k.png  used on input line 130.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<40k.png, id=14, 642.4pt x 481.8pt>
+<40k.png, id=24, 642.4pt x 481.8pt>
 File: 40k.png Graphic file (type png)
 <use 40k.png>
-Package pdftex.def Info: 40k.png  used on input line 120.
+Package pdftex.def Info: 40k.png  used on input line 132.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<L0.png, id=15, 642.4pt x 481.8pt>
+<L0.png, id=25, 642.4pt x 481.8pt>
 File: L0.png Graphic file (type png)
 <use L0.png>
-Package pdftex.def Info: L0.png  used on input line 127.
+Package pdftex.def Info: L0.png  used on input line 139.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<L1.png, id=16, 642.4pt x 481.8pt>
+<L1.png, id=26, 642.4pt x 481.8pt>
 File: L1.png Graphic file (type png)
 <use L1.png>
-Package pdftex.def Info: L1.png  used on input line 129.
+Package pdftex.def Info: L1.png  used on input line 141.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<L2.png, id=17, 642.4pt x 481.8pt>
+<L2.png, id=27, 642.4pt x 481.8pt>
 File: L2.png Graphic file (type png)
 <use L2.png>
-Package pdftex.def Info: L2.png  used on input line 131.
+Package pdftex.def Info: L2.png  used on input line 143.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<L3.png, id=18, 642.4pt x 481.8pt>
+<L3.png, id=28, 642.4pt x 481.8pt>
 File: L3.png Graphic file (type png)
 <use L3.png>
-Package pdftex.def Info: L3.png  used on input line 133.
+Package pdftex.def Info: L3.png  used on input line 145.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<L4.png, id=19, 642.4pt x 481.8pt>
+<L4.png, id=29, 642.4pt x 481.8pt>
 File: L4.png Graphic file (type png)
 <use L4.png>
-Package pdftex.def Info: L4.png  used on input line 135.
+Package pdftex.def Info: L4.png  used on input line 147.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<L5.png, id=20, 642.4pt x 481.8pt>
+<L5.png, id=30, 642.4pt x 481.8pt>
 File: L5.png Graphic file (type png)
 <use L5.png>
-Package pdftex.def Info: L5.png  used on input line 137.
+Package pdftex.def Info: L5.png  used on input line 149.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
-<L6.png, id=21, 642.4pt x 481.8pt>
+<L6.png, id=31, 642.4pt x 481.8pt>
 File: L6.png Graphic file (type png)
 <use L6.png>
-Package pdftex.def Info: L6.png  used on input line 139.
+Package pdftex.def Info: L6.png  used on input line 151.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
+[3
+
+]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2] [3 <./5k.png (PNG copy)> <./10k.png (PNG copy)> <./20k.png (PNG copy)> <./4
-0k.png (PNG copy)>] [4 <./L0.png (PNG copy)> <./L1.png (PNG copy)> <./L2.png (P
-NG copy)> <./L3.png (PNG copy)> <./L4.png (PNG copy)> <./L5.png (PNG copy)> <./
-L6.png (PNG copy)>]
-Overfull \hbox (66.87695pt too wide) in paragraph at lines 147--147
+[4 <./5k.png (PNG copy)> <./10k.png (PNG copy)> <./20k.png (PNG copy)> <./40k.p
+ng (PNG copy)>] [5 <./L0.png (PNG copy)> <./L1.png (PNG copy)> <./L2.png (PNG c
+opy)> <./L3.png (PNG copy)> <./L4.png (PNG copy)> <./L5.png (PNG copy)> <./L6.p
+ng (PNG copy)>]
+Overfull \hbox (66.87695pt too wide) in paragraph at lines 159--159
 []        \OT1/cmtt/m/n/10.95 model.add(Conv2D(16, (3, 3), padding='same', inpu
 t_shape=x_train.shape[1:], activation='relu'))[] 
  []
 
 
-Overfull \hbox (38.13351pt too wide) in paragraph at lines 155--155
+Overfull \hbox (38.13351pt too wide) in paragraph at lines 167--167
 []        \OT1/cmtt/m/n/10.95 model.add(Dense(num_classes, activation='softmax'
 , kernel_regularizer=regularizers.l1(i)))[] 
  []
 
 
-Overfull \hbox (15.13876pt too wide) in paragraph at lines 156--156
+Overfull \hbox (15.13876pt too wide) in paragraph at lines 168--168
 []        \OT1/cmtt/m/n/10.95 model.compile(loss="categorical_crossentropy", op
 timizer='adam', metrics=["accuracy"])[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--165
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--165
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--165
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
-[5
+[6
 
 ] (./week8.aux) ) 
 Here is how much of TeX's memory you used:
- 4290 strings out of 480608
- 67620 string characters out of 5903630
- 320295 words of memory out of 5000000
+ 4281 strings out of 480608
+ 67437 string characters out of 5903630
+ 321295 words of memory out of 5000000
  20110 multiletter control sequences out of 15000+600000
  539161 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -485,10 +489,10 @@ mr9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
 10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss1
 2.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10
 .pfb>
-Output written on week8.pdf (5 pages, 499615 bytes).
+Output written on week8.pdf (6 pages, 525356 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
