@@ -19,27 +19,25 @@ def read_file(text=None):
                 Z.append(data['early_access'])
             return text_vals, Y, Z
     translations = []
-    origins = []
     with open(text) as json_file:
         for i in json_file:
             data = json.loads(i)
             translations.append(data['text'])
-            origins.append(data['origin'])
-    return translations, origins
+    return translations
 
 
 def translate_text(text):
-    translator = Translator()
+    translator = google_translator()
     translation = translator.translate(text)
     origin = text
     translated = translation
     return origin, translated
 
 
-def write_translations(texts, origins):
-    with open('translations.txt', 'w') as f:
-        for text, origin in zip(texts, origins):
-            f.write('{"text" : ' + '"' + text + '"' + '}' + '{"origin" : ' + '"' + origin + '"' + '}' + '\n')
+def write_translations(texts):
+    with open('translations.txt', 'a', encoding="utf-8") as f:
+        for text in texts:
+            f.write('{"text" : ' + '"' + text + '"' + '}' + '\n')
 
 
 def main():
@@ -47,27 +45,21 @@ def main():
     origin = []
     translated = []
     if path.exists('translations.txt'):
-        translated, origin = read_file('translations.txt')
+        translated = read_file('translations.txt')
     else:
         i = 0
-        # chunks = [texts[x:x + 100] for x in range(0, len(texts), 100)]
-        # for chunk in chunks:
-        #     part_origin, part_translated = translate_text(chunk)
-        #     print(part_translated)
-        #     print(i)
-        #     i = i +1
         for text in texts:
-            part_origin, part_translated = translate_text(text)
-            origin.append(part_origin)
-            translated.append(part_translated)
-            print(i, part_translated)
-            i = i + 1
-        write_translations(translated, origin)
-    data = pd.DataFrame({'Origin': origin,
-                         'Translated': translated,
-                         'Voted Up': Y,
-                         'Early Access': Z})
-    print(data)
+            if i >= 4643:
+                part_origin, part_translated = translate_text(text)
+                origin.append(part_origin)
+                translated.append(part_translated)
+                print(i, part_translated)
+                write_translations(translated)
+                translated = []
+                origin = []
+            i = i+1
+            print(i)
+    dataset = pd.DataFrame()
 
 
 if __name__ == '__main__':
