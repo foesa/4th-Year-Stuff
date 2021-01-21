@@ -1,9 +1,10 @@
 import json
-import pandas as pd
-from googletrans import Translator
-from google_trans_new import google_translator
-import os.path
+import re
 from os import path
+import pandas as pd
+from google_trans_new import google_translator
+
+from FinalAssignment.pre_proceess import main as pre_process
 
 
 def read_file(text=None):
@@ -19,11 +20,23 @@ def read_file(text=None):
                 Z.append(data['early_access'])
             return text_vals, Y, Z
     translations = []
-    with open(text) as json_file:
+    with open(text, encoding='utf-8') as json_file:
         for i in json_file:
             data = json.loads(i)
-            translations.append(data['text'])
+            try:
+                translations.append(data['text'])
+            except TypeError:
+                return pd.DataFrame(json.loads(i))
     return translations
+
+
+def fixFile():
+    with open('translations.txt', 'r', encoding="utf-8") as s:
+        with open('new_translations.txt', 'a', encoding="utf-8") as f:
+            for i in s:
+                matches = re.findall(r'\"(.+?)\"', i)
+                matches.pop(0)
+                f.write('{"text" : ' + '"' + ",".join(matches) + '"' + '}' + '\n')
 
 
 def translate_text(text):
@@ -42,24 +55,29 @@ def write_translations(texts):
 
 def main():
     texts, Y, Z = read_file()
-    origin = []
     translated = []
-    if path.exists('translations.txt'):
-        translated = read_file('translations.txt')
+    if path.exists('new_translations.txt'):
+        # fixFile()
+        translated = read_file('new_translations.txt')
     else:
         i = 0
         for text in texts:
             if i >= 4643:
                 part_origin, part_translated = translate_text(text)
-                origin.append(part_origin)
                 translated.append(part_translated)
-                print(i, part_translated)
                 write_translations(translated)
                 translated = []
-                origin = []
-            i = i+1
-            print(i)
-    dataset = pd.DataFrame()
+            i = i + 1
+    dataset = pd.DataFrame({'Text': translated,
+                            'Voted Up': Y,
+                            'Early Access': Z})
+    if not path.exists('processed_reviews.txt'):
+        pre_process(dataset['Text'])
+    else:
+        tokens = read_file('processed_reviews.txt')
+        dataset["Tokens"] = tokens
+
+    print(dataset.loc[0])
 
 
 if __name__ == '__main__':
