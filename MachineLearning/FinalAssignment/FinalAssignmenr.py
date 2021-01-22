@@ -3,7 +3,8 @@ import re
 from os import path
 import pandas as pd
 from google_trans_new import google_translator
-
+from FinalAssignment.svc_classifier import main as svc
+from FinalAssignment.CNN import main as cnn
 from FinalAssignment.pre_proceess import main as pre_process
 
 
@@ -75,9 +76,11 @@ def main():
         pre_process(dataset['Text'])
     else:
         tokens = read_file('processed_reviews.txt')
-        dataset["Tokens"] = tokens
-
+        dataset["tokens"] = tokens
     print(dataset.loc[0])
+    svc(dataset)
+    print(dataset.groupby('Voted Up').count())
+    # cnn(dataset)
 
 
 if __name__ == '__main__':
