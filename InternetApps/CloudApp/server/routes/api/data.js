@@ -5,9 +5,7 @@ const axios = require('axios');
 const API_KEY = 'b593175c14a6ed4bcd98411176673fc5'
 const BUCKET_URL = 'https://csu44000assignment220.s3.eu-west-1.amazonaws.com/moviedata.json'
 
-// Create Tables
-// TODO: create AWS DynamoDB details
-// TODO: Test DB (Attempt to query it)
+
 router.get('/', async(req, res) =>{
     let resp =  await axios.get(BUCKET_URL);
     let movieData = resp.data;
@@ -38,16 +36,18 @@ router.get('/', async(req, res) =>{
         }
     });
 
+    //Check if table has been created, if not will retun an error 
     ddb.listTables({Limit: 10}, function(err, data) {
         if (err) {
           console.log("Error, tables not created yet, retry in a moment", err.code);
         } else {
-            setTimeout(function(){
+            //Gives it a few seconds for AWS to provision the tables as attempting to add items straight away causes some items not to be added
+            setTimeout(async function(){
                 var docClient = new AWS.DynamoDB.DocumentClient();
                 console.log("Importing movies in to DynamoDB. Please wait");
                 let i = 0;
 
-                movieData.forEach(function(movie){
+                await movieData.forEach(function(movie){
                 var params = {
                     TableName: "Movies",
                     Item: {

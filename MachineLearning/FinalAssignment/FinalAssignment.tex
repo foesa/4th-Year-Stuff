@@ -138,8 +138,7 @@ def hyper_pick(X, y):
     grid.fit(X_train, y_train)
     print(grid.best_params_)
 \end{verbatim}
-From this I saw that the best starting parameters were using a Sigmoid Kernel with C =1 and K =1 also. 
-\\ From here I tuned the K and C parameters using 5-fold cross validation.  This outputed a graph so I could then chose an optimal value of K and C. 
+From here I tuned the K and C parameters using 5-fold cross validation.  This outputed a graph so I could then chose an optimal value of K and C. 
 \begin{verbatim}
 def cross_val(k, model, X, y):
     """
@@ -210,5 +209,38 @@ def plot_accuracy(X, y):
     plt.tight_layout()
     plt.show()
 \end{verbatim}
+\begin{figure}[h]
+\centering
+\subfloat[Voted Up]{{\includegraphics[width=18cm]{myplot.png}}}
+\qquad
+\subfloat[Early Access]{{\includegraphics[width=18cm]{eacv.png}}}
+\end{figure}
 
+From the above graphs we can see that when C =1 and Gamma = 1 also we can maximise the accuracy so those are the hyper parameters I chose for 'Voted Up'.  From using GridSearchCV,  we found that using a Sigmoid kernel was the best fit for the data. 
+\\ For 'Early Access' the graphs indicate that when Gamma = 0.1 and C = 0.1 with a Gaussian kernel seems to be the best combination of hyper-parameters. 
+\subsubsection{Convolutional Neural Network}
+For the deep learning algorithms,  I had to go with a different approach for using the text data.  Instead of doing One-Hot Encoding with the TF-IDF vectorizer,  I instead went with a word embedding approach as deep learning needs to know the association between words to make accurate predictions.\\To do this, I made use of the preprocessed texts but used a tokenizer that turned our text corpus into a series of vectors. 
+\begin{verbatim}
+tokenizer = Tokenizer(num_words=len(TRAINING_VOCAB), lower=True, char_level=False)
+    tokenizer.fit_on_texts(train_data["Text_Final"].tolist())
+    training_sequences = tokenizer.texts_to_sequences(train_data["Text_Final"].tolist())
+\end{verbatim} 
+Following this I used Google’s word2vec for word associations since our vocabulary size wasn’t large enough for us to train my own embeddings. For each of our models, I added an embedding layer that acted as our input layer for the vectors.
+\begin{verbatim}
+train_word_index = tokenizer.word_index
+    print('Found %s unique tokens.' % len(train_word_index))
+    train_embedding_weights = np.zeros((len(train_word_index) + 1, EMBEDDING_DIM))
+    for word, index in train_word_index.items():
+        train_embedding_weights[index, :] = word2vec[word] if word in word2vec else np.random.rand(EMBEDDING_DIM)
+\end{verbatim}
+In terms of hyperparameters,  there's numerous ones to train such as the embedding dimensions size,  the number of convolutional layers we should use,  the batch size we should use for training and numerous others. Tuning all these hyperparameters using cross validation was too time intensive, so instead I focused on cleaning the data better as it provided a more immediate improvement and took much less time to do.  I did attempt to find the optimum amount of Epochs to run the CNN for. 
+\begin{figure}[h]
+\centering
+\subfloat[Voted Up]{{\includegraphics[width=13cm]{vupcnn.png}}}
+\qquad
+\subfloat[Early Access]{{\includegraphics[width=13cm]{eacnn.png}}}
+\end{figure}
+From the above figures,  training the data for about 3 epochs seems to be the best tradeoff between accuracy and loss for 'Voted Up'
+\\ Similarly,  for 'Early Access' it seems about 3 epochs is the sweet spot between accuracy and loss.
+\subsection{Results}
 \end{document}

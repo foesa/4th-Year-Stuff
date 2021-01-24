@@ -32,9 +32,9 @@
 </template>
 
 <script>
-const post_url = 'http://localhost:5000/api/data/';
-const delete_url = 'http://localhost:5000/api/data/delete/';
-const get_url = 'http://localhost:5000/api/data/'
+const post_url = 'http://ec2-3-88-17-87.compute-1.amazonaws.com:5000/api/data/';
+const delete_url = 'http://ec2-3-88-17-87.compute-1.amazonaws.com:5000/api/data/delete';
+const get_url = 'http://ec2-3-88-17-87.compute-1.amazonaws.com:5000/api/data/'
 const axios = require('axios');
 export default {
   name: 'FrontEnder',
