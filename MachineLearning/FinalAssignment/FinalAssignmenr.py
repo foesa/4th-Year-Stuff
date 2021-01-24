@@ -20,7 +20,7 @@ def read_file(text=None):
                 Y.append(data['voted_up'])
                 Z.append(data['early_access'])
             return text_vals, Y, Z
-    translations = []
+    translations =  []
     with open(text, encoding='utf-8') as json_file:
         for i in json_file:
             data = json.loads(i)
