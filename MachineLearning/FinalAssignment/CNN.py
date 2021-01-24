@@ -39,7 +39,7 @@ def reprocess_data(dataset):
     dataset['Text_Final'] = [' '.join(x) for x in dataset['tokens']]
     pos = []
     neg = []
-    for l in dataset['Voted Up']:
+    for l in dataset['Early Access']:
         if l == 1:
             pos.append(1)
             neg.append(0)
