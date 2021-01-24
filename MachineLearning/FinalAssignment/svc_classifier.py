@@ -20,7 +20,7 @@ def tf_idf(dataset):
     tfidf_converter = TfidfVectorizer(min_df=5, max_df=0.7)
     wordDoc = [" ".join(x) for x in data]
     X = tfidf_converter.fit_transform(wordDoc)
-    y = dataset["Voted Up"].values
+    y = dataset["Early Access"].values
     # df = pd.DataFrame(X[0].T.todense(), index=tfidf_converter.get_feature_names(), columns=["TF-IDF"])
     # df = df.sort_values('TF-IDF', ascending=False)
     # print(df.head())
@@ -38,7 +38,7 @@ def hyper_pick(X, y):
     param_grid = [{'C': [0.01, 0.1, 1, 10, 100], 'gamma': [10, 1, 0.1, 0.01, 0.001],
                    'kernel': ['rbf', 'poly', 'sigmoid']}, {'kernel': ['linear'], 'C': [0.01, 0.1, 1, 10, 100],
                                                            'gamma': [10, 1, 0.1, 0.01, 0.001]}]
-    grid = GridSearchCV(SVC(), param_grid, refit=True, verbose=2, n_jobs=-1)
+    grid = GridSearchCV(SVC(), param_grid, refit=True, verbose=2, n_jobs=-1, scoring='accuracy')
     grid.fit(X_train, y_train)
     print(grid.best_params_)
 
@@ -122,7 +122,7 @@ def plot_accuracy(X, y):
         accuracy_list = []
         std_list = []
         for c in C:
-            model = SVC(kernel='sigmoid', gamma=i, C=c)
+            model = SVC(kernel='rbf', gamma=i, C=c)
             accuracy, std, _, _ = cross_val(5, model, X, y)
             accuracy_list.append(accuracy)
             std_list.append(std)
@@ -138,8 +138,8 @@ def plot_accuracy(X, y):
 
 def main(review_dataset):
     X, y = tf_idf(review_dataset)
-    # hyper_pick(X, y)
-    svm(X, y)
+    hyper_pick(X, y)
+    # svm(X, y)
     # cross_val(5, SVC(kernel='rbf', gamma=1, C=100), X, y)
     # plot_accuracy(X,y)
 
