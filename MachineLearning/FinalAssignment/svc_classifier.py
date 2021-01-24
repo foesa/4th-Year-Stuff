@@ -52,7 +52,7 @@ def svm(X, y):
     """
     labels = [0, 1]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-    clf = SVC(kernel='sigmoid', gamma=1, C=1)
+    clf = SVC(kernel='rbf', gamma=10, C=0.1)
     clf.fit(X_train, y_train)
     predict = clf.predict(X_test)
     print('Confusion Matrix: ', confusion_matrix(y_test, predict, labels=labels))
@@ -138,8 +138,8 @@ def plot_accuracy(X, y):
 
 def main(review_dataset):
     X, y = tf_idf(review_dataset)
-    hyper_pick(X, y)
-    # svm(X, y)
+    # hyper_pick(X, y)
+    svm(X, y)
     # cross_val(5, SVC(kernel='rbf', gamma=1, C=100), X, y)
     # plot_accuracy(X,y)
 
