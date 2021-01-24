@@ -78,9 +78,9 @@ def main():
         tokens = read_file('processed_reviews.txt')
         dataset["tokens"] = tokens
     print(dataset.loc[0])
-    svc(dataset)
+    # svc(dataset)
     print(dataset.groupby('Early Access').count())
-    # cnn(dataset)
+    cnn(dataset)
 
 
 if __name__ == '__main__':

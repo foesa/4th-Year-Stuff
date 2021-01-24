@@ -1,3 +1,4 @@
+from sklearn.metrics import plot_roc_curve, roc_curve
 from tensorflow.python.keras.layers import LSTM
 
 from sklearn.model_selection import train_test_split
@@ -39,7 +40,7 @@ def reprocess_data(dataset):
     dataset['Text_Final'] = [' '.join(x) for x in dataset['tokens']]
     pos = []
     neg = []
-    for l in dataset['Early Access']:
+    for l in dataset['Voted Up']:
         if l == 1:
             pos.append(1)
             neg.append(0)
@@ -205,11 +206,10 @@ def main(reviews):
     x_test = test_cnn_data
     model = ConvNet(train_embedding_weights, MAX_SEQUENCE_LENGTH, len(train_word_index) + 1, EMBEDDING_DIM,
     len(list(label_names)))
-    history = model.fit(x_train, y_train, epochs=10, batch_size=64, validation_data=(x_test, y_test))
-    plot_history(history)
+    history = model.fit(x_train, y_train, epochs=3, batch_size=64, validation_data=(x_test, y_test))
+    # plot_history(history)
     X=np.concatenate((x_train,x_test))
-    y=np.concatenate((y_train,y_test))    
-
+    y=np.concatenate((y_train,y_test))
     cross_val_NN(5,X,y,train_embedding_weights,MAX_SEQUENCE_LENGTH,
                  train_word_index,EMBEDDING_DIM,label_names,max_epoch=5,
                  nnmodel='CNN')
