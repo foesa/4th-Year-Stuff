@@ -20,7 +20,7 @@ def tf_idf(dataset):
     tfidf_converter = TfidfVectorizer(min_df=5, max_df=0.7)
     wordDoc = [" ".join(x) for x in data]
     X = tfidf_converter.fit_transform(wordDoc)
-    y = dataset["Early Access"].values
+    y = dataset["Voted Up"].values
     # df = pd.DataFrame(X[0].T.todense(), index=tfidf_converter.get_feature_names(), columns=["TF-IDF"])
     # df = df.sort_values('TF-IDF', ascending=False)
     # print(df.head())
@@ -52,7 +52,7 @@ def svm(X, y):
     """
     labels = [0, 1]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-    clf = SVC(kernel='rbf', gamma=10, C=0.01)
+    clf = SVC(kernel='sigmoid', gamma=1, C=1)
     clf.fit(X_train, y_train)
     predict = clf.predict(X_test)
     print('Confusion Matrix: ', confusion_matrix(y_test, predict, labels=labels))
@@ -60,6 +60,7 @@ def svm(X, y):
     print('Precision Score: ', precision_score(y_test, predict, labels=labels, average='macro'))
     print('Accuracy Score: ', accuracy_score(y_test, predict))
     plot_roc_curve(clf,X_test,y_test)
+    plt.plot([0, 1], [0, 1], color='green', linestyle='--', label='Most Common Classifier')
     plt.show()
     print(classification_report(y_test, predict, digits=3))
     print('Recall: ', recall_score(y_test, predict, labels=labels, average='macro'))

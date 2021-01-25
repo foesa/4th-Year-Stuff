@@ -243,7 +243,7 @@ In terms of hyperparameters,  there's numerous ones to train such as the embeddi
 From the above figures,  training the data for about 3 epochs seems to be the best tradeoff between accuracy and loss for 'Voted Up'
 \\ Similarly,  for 'Early Access' it seems about 3 epochs is the sweet spot between accuracy and loss.
 \subsection{Results}
-To evaluate the results,  I used a baseline that selected the most common class each time and set that as the baseline for performance of the models. I also evaluated the models using a section of the data that I sectioned off before training to act as the test dataset for evaluating the results.
+To evaluate the results,  I used a baseline that selected the most common class each time and set that as the baseline for performance of the models. I also evaluated the models using a section of the data as a hold-out set before training to act as the test dataset for evaluating the results as I wanted to see how well the classifiers do on unseen data.
 \subsubsection{SVC - Voted Up}
 Using the previous hyperparameters with C=1, Gamma =1 and a Sigmoid Kernel we get the following ROC Curve.
 \begin{figure}[ht]
@@ -755,5 +755,38 @@ def main(reviews):
                  train_word_index,EMBEDDING_DIM,label_names,max_epoch=5,
                  nnmodel='CNN')
 \end{verbatim}
+\newpage
 \section{2}
+\subsection{(i)}
+Underfitting refers to when a model hasn't captured the general trend of the data and hasn't learnt from the trends in the data making it unable to predict on new data with any accuracy as it hasn't generalized on the new data well enough,  an example of this would be this:
+\begin{figure}[h]
+\centering
+\subfloat[Underfitting]{{\includegraphics[width=6cm]{kr40.png}}}
+\qquad
+\end{figure}
+\\
+Overfitting is the when the model has learnt all the trends in the data to the point where it starts to capture even the noise in the dataset.  It makes the model unable to predict on unseen data as it hasn't captured the general trend of the data but instead has captured even the noise. 
+\begin{figure}[h]
+\centering
+\subfloat[Overfitting]{{\includegraphics[width=6cm]{kr34.png}}}
+\qquad
+\end{figure}
+\subsection{{ii}}
+\begin{verbatim}
+mean_error 
+k_parts = dataset split into K parts
+for test_set in k_parts:
+    model.fit(dataset excpet test_set)
+    error = Error(predicted(test_set) vs  actual_value(test_set))
+    mean_error = error + mean_error
+mean_error = mean_error/K
+\end{verbatim}
+\subsection{(iii)}
+K-fold Cross validation acts a good way to select model hyperparameters as it gives more of a generalisation of how the hyperparameters would work rather than having one test set.  This is due to the fact we can compare the performance of the hyperparameter across multiple different test and train sets to see and get the average error of the hyperparameter,  rather than just having one number if we were to use a hold-out set only as validation. 
+\subsection{(iv)}
+Logistic Regression is a much simpler model than KNN and such requires much less computing power to work especially on large datasets.
+\\ KNN requires much less tuning of hyperparameters in comparison to Logistic Regression,  with only K having to be tuned.
+\\ Logistic Regression only supports linear solutions whilst KNN supports both linear and non-linear solutions(Extra feature selection necessary to make a non-linear dataset workable with Logistic Regression)
+\subsection{(V)}
+A KNN classifier can give inaccurate predictions if the K parameter is not tuned correctly.  This can cause it to miss-classify data that actually fits in a class if the K value is too small or cause it include data in a class it shouldn't be in if it's too large.
 \end{document}
