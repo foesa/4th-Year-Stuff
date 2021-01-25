@@ -40,7 +40,7 @@ def reprocess_data(dataset):
     dataset['Text_Final'] = [' '.join(x) for x in dataset['tokens']]
     pos = []
     neg = []
-    for l in dataset['Voted Up']:
+    for l in dataset['Early Access']:
         if l == 1:
             pos.append(1)
             neg.append(0)
@@ -181,7 +181,7 @@ def cross_val_NN(k, X, y, train_embedding_weights, MAX_SEQUENCE_LENGTH,
 def main(reviews):
     reprocess_data(reviews)
     train_data, test_data, TRAINING_VOCAB, TEST_VOCAB = test_train_split(reviews)
-    word2vec_path = 'GoogleNews-vectors-negative300.bin.gz'
+    word2vec_path = '../GoogleNews-vectors-negative300.bin.gz'
     word2vec = models.KeyedVectors.load_word2vec_format(word2vec_path, binary=True)
     training_embeddings = get_word2vec_embeddings(word2vec, train_data, generate_missing=True)
     MAX_SEQUENCE_LENGTH = 50
