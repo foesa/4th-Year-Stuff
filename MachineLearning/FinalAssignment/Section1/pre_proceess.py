@@ -40,5 +40,5 @@ def main(reviews):
         review = clean_review(review)
         tokens = tokenize(review)
         processed_reviews.append({"tokens": tokens})
-    with open("../processed_reviews.txt", "w") as f:
+    with open("processed_reviews.txt", "w") as f:
         f.write(json.dumps(processed_reviews))

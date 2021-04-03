@@ -11,7 +11,7 @@ def read_file(text=None):
     if text is None:
         Y = []
         Z = []
-        with open('../reviews_262.jl.txt', encoding='utf8') as json_file:
+        with open('reviews_262.jl.txt', encoding='utf8') as json_file:
             text_vals = []
             for i in json_file:
                 data = json.loads(i)
@@ -32,7 +32,7 @@ def read_file(text=None):
 
 def fixFile():
     with open('translations.txt', 'r', encoding="utf-8") as s:
-        with open('../new_translations.txt', 'a', encoding="utf-8") as f:
+        with open('new_translations.txt', 'a', encoding="utf-8") as f:
             for i in s:
                 matches = re.findall(r'\"(.+?)\"', i)
                 matches.pop(0)
@@ -56,7 +56,7 @@ def write_translations(texts):
 def main():
     texts, Y, Z = read_file()
     translated = []
-    if path.exists('../new_translations.txt'):
+    if path.exists('new_translations.txt'):
         # fixFile()
         translated = read_file('new_translations.txt')
     else:
@@ -71,7 +71,7 @@ def main():
     dataset = pd.DataFrame({'Text': translated,
                             'Voted Up': Y,
                             'Early Access': Z})
-    if not path.exists('../processed_reviews.txt'):
+    if not path.exists('processed_reviews.txt'):
         pre_process(dataset['Text'])
     else:
         tokens = read_file('processed_reviews.txt')

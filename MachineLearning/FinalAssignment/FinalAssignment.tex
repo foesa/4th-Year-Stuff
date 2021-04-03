@@ -280,6 +280,39 @@ Accuracy:  90\%
 \subsection{Conclusions}
 From the results, we can see that both classifiers are good at predicting the polarity of reviews, with them both performing better than the baseline model. The precision and recall of these models is sufficently high that they can distinguish between the classes well also.
 \\ In comparison though, when detecting if a review is in early access, the SVC classifier isn't as good at detecting if the review is for an early access game due to the low F1 and Precision score. But the CNN can both differenciate between the classes and maintain a high level of Accuracy which is a very important as otherwise, the model wouldn't be any better than just predicting the most common class.
+\section{2}
+\subsection{(i)}
+Underfitting refers to when a model hasn't captured the general trend of the data and hasn't learnt from the trends in the data making it unable to predict on new data with any accuracy as it hasn't generalized on the new data well enough,  an example of this would be this:
+\begin{figure}[h]
+\centering
+\subfloat[Underfitting]{{\includegraphics[width=6cm]{kr40.png}}}
+\qquad
+\end{figure}
+\\
+Overfitting is the when the model has learnt all the trends in the data to the point where it starts to capture even the noise in the dataset.  It makes the model unable to predict on unseen data as it hasn't captured the general trend of the data but instead has captured even the noise. 
+\begin{figure}[h]
+\centering
+\subfloat[Overfitting]{{\includegraphics[width=6cm]{kr34.png}}}
+\qquad
+\end{figure}
+\subsection{{ii}}
+\begin{verbatim}
+mean_error 
+k_parts = dataset split into K parts
+for test_set in k_parts:
+    model.fit(dataset excpet test_set)
+    error = Error(predicted(test_set) vs  actual_value(test_set))
+    mean_error = error + mean_error
+mean_error = mean_error/K
+\end{verbatim}
+\subsection{(iii)}
+K-fold Cross validation acts a good way to select model hyperparameters as it gives more of a generalisation of how the hyperparameters would work rather than having one test set.  This is due to the fact we can compare the performance of the hyperparameter across multiple different test and train sets to see and get the average error of the hyperparameter,  rather than just having one number if we were to use a hold-out set only as validation. 
+\subsection{(iv)}
+Logistic Regression is a much simpler model than KNN and such requires much less computing power to work especially on large datasets.
+\\ KNN requires much less tuning of hyperparameters in comparison to Logistic Regression,  with only K having to be tuned.
+\\ Logistic Regression only supports linear solutions whilst KNN supports both linear and non-linear solutions(Extra feature selection necessary to make a non-linear dataset workable with Logistic Regression)
+\subsection{(V)}
+A KNN classifier can give inaccurate predictions if the K parameter is not tuned correctly.  This can cause it to miss-classify data that actually fits in a class if the K value is too small or cause it include data in a class it shouldn't be in if it's too large.
 \subsection{Code Appendix}
 \subsubsection{FinalAssignment.py}
 \begin{verbatim}
@@ -756,37 +789,4 @@ def main(reviews):
                  nnmodel='CNN')
 \end{verbatim}
 \newpage
-\section{2}
-\subsection{(i)}
-Underfitting refers to when a model hasn't captured the general trend of the data and hasn't learnt from the trends in the data making it unable to predict on new data with any accuracy as it hasn't generalized on the new data well enough,  an example of this would be this:
-\begin{figure}[h]
-\centering
-\subfloat[Underfitting]{{\includegraphics[width=6cm]{kr40.png}}}
-\qquad
-\end{figure}
-\\
-Overfitting is the when the model has learnt all the trends in the data to the point where it starts to capture even the noise in the dataset.  It makes the model unable to predict on unseen data as it hasn't captured the general trend of the data but instead has captured even the noise. 
-\begin{figure}[h]
-\centering
-\subfloat[Overfitting]{{\includegraphics[width=6cm]{kr34.png}}}
-\qquad
-\end{figure}
-\subsection{{ii}}
-\begin{verbatim}
-mean_error 
-k_parts = dataset split into K parts
-for test_set in k_parts:
-    model.fit(dataset excpet test_set)
-    error = Error(predicted(test_set) vs  actual_value(test_set))
-    mean_error = error + mean_error
-mean_error = mean_error/K
-\end{verbatim}
-\subsection{(iii)}
-K-fold Cross validation acts a good way to select model hyperparameters as it gives more of a generalisation of how the hyperparameters would work rather than having one test set.  This is due to the fact we can compare the performance of the hyperparameter across multiple different test and train sets to see and get the average error of the hyperparameter,  rather than just having one number if we were to use a hold-out set only as validation. 
-\subsection{(iv)}
-Logistic Regression is a much simpler model than KNN and such requires much less computing power to work especially on large datasets.
-\\ KNN requires much less tuning of hyperparameters in comparison to Logistic Regression,  with only K having to be tuned.
-\\ Logistic Regression only supports linear solutions whilst KNN supports both linear and non-linear solutions(Extra feature selection necessary to make a non-linear dataset workable with Logistic Regression)
-\subsection{(V)}
-A KNN classifier can give inaccurate predictions if the K parameter is not tuned correctly.  This can cause it to miss-classify data that actually fits in a class if the K value is too small or cause it include data in a class it shouldn't be in if it's too large.
 \end{document}
