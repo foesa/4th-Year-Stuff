@@ -1,6 +1,0 @@
-pandas
-keras
-matplotlib
-numpy
-tensorflow
-scikit-learn~=0.23.2
