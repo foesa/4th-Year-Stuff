@@ -15,7 +15,7 @@
 %%% PAGE DIMENSIONS
 \usepackage{geometry} % to change the page dimensions
 \geometry{a4paper} % or letterpaper (US) or a5paper or....
-\geometry{margin=1in} % for example, change the margins to 2 inches all round
+%\geometry{margin=1in} % for example, change the margins to 2 inches all round
 % \geometry{landscape} % set up the page for landscape
 %   read geometry.pdf for detailed page layout information
 
@@ -118,8 +118,104 @@ Reflection: The review gave me some really actionable feedback. The positive fee
 At the start of this week, I was asked to pivot from working on the multicurrencies to working on Hublets based work as out team was currently in Code Red(Maintenance mode essentially) and our team was trying to exit it as soon as possible to work on new features instead. Currently all data goes through the North America data centres but as part of GDPR, customers have the right to chose if their data can leave the US. Also there's high latency for requests as they have to travel so far to get a response. This is where Hublets come, they help solve GDPR concerns whilst also reducing latency. The task I was given was to redo all the webhooks for Shopify to target a new load balancer that would then redirect the data to the right Hublet, be it the one in North America or Europe. To complete this job I had to write a backfill job which is comprised of 2 main parts; fixing all the old data and then changing how any new data is created. I learnt about Jackson, a json processor for java that can create classes and such for from templates that you create. This helps to standardise the code and reduce the amount of future work necessary as classes are auto-generated from your templates. 
 \\\\
 Reflection: Taking on the feedback from the previous week definetly helped me to increase the rate at which I worked on this task this week. Initally it was hard pivoting from one task to another but my team helped me to gain a footing in the Hublets work as they had been working on it for some time. Leaning on your team and using them as a resource is incredibly useful and helped me to be able to make progress much quicker than if I had done what I was doing before and just coding by myself and not giving updates and such. They unblocked me when I provided regular updates to my issues and we did some pair programming work when necessary. An efficent team can certainly increase the productivity of yourself as an engineer as multiple people working in collaboration can always solve problems much quicker than if you were working on something by yourself.
+
+\newpage
 \section{Technology Management Processes}
+At HubSpot there are multiple process in place to manage the software engineering process.
+\subsection{Project Management Methods}
+The actual methodology in place tends to vary on a team by team basis. The technical lead(TL) for the team usually tries to find what works for the team and then adapt a strategy based off this. \\ In regards to the team I'm working with, our style is the hybridization of the agile and scrum style of project management. The work for our team is broken up into 2 week sprints where at the beginnig of a new sprint, we look at our issues and then assign tasks as necessary to be done over the next 2 weeks. This works for our team as we work on multiple different repositories and projects so we need a little more flexibility than a traditional waterfall style of management would give us. Our team sometimes may hve to switch tasks to deal with certain situations that might arize called Crit-Sits where we need to down tools and focus on fixing an issue that is currently impacting customers. These issues can be quite complex to solve and require a lot of time to fix so this style of management help us be able to pivot to new tasks quickly as we can pivot from whatever we were doing to something else entirely as our sprints are short enough that we can reprioritize without having the adverse affect of being too behind schedule. In terms of when we have meetings to discuss what tasks need to be done and the current progress of tasks, we have daily stand ups at different times depending on if we're meeting with our PM who's in the United States. \\ We also have 2 other weekly meetings to discuss our systems: \begin{itemize} \item \textbf{Backlog Grooming}: This is a weekly meeting to asses the state of the major systems our team oversee and see if any of them require any major maintenance to be done due to unusual levels of downtime and such. \item \textbf{Ops Review}: This is another weekly meeting we hold with our PM to see what issues we have on our board. We use this meeting to reasses our priorities and shift focus to other things if necessary. \\ \end{itemize} 
 
-More text.
+In terms of long term management of projects, a group called the triad is responsible for the long term vision of our team.
+ \begin{itemize}  
+ \item Our TL and our program manager(PM) come together with the lead designer to discuss what's the next milestone or objective for our team and thn decide what are the major deliverables necessary to make this a reality. 
+ \item From there these major deliverables are then broken down into smaller deliverables by our TL and PM and brought to the team. These smaller deliverables are then discussed with the team to see what needs to be done first and what blocks other work that needs to be done. 
+ \item Issues are then created for each of these individual tasks and are added to our ZenHub board. Some issues may be tagged as investigations if it's not immediatly clear what work needs to be done in order for the issue to be closed, whilst others may be flagged as implementaions, where the team may need to get together to discuss how's the best way to implement more complex features and such.
+\\ \end{itemize}
+\subsubsection{\textbf {Strengths and Weaknesses}}
+This approach to management has it's strengths and weaknesses of course.
+\\
+Positive Effects \begin{itemize} 
+\item The allure of such a stratedgy is it allows for rapid development and iteration of projects and such and allows for members on the team to be constantly working on something new and interesting, which in turn reduces employee turn over as teams aren't stuck doing the one thing for extended periods of time. 
+\item The rapid prototyping and development of features fits well with the HubSpot philosophy of moving fast and efficently. 
+\item The added visibility of tasks and such is also a major benefit through scrum meetings/stand ups. 
+\item Feedback from management and customers can quickly be integrated.
+\end{itemize}  
 
+\subsubsection{\textbf{Negative Effects}}
+ \begin{itemize}
+ \item Scope creep can become a problem as more features and ideas can be suggested and implemented as there no set end date.
+ \item Assuring the quality of code can be difficult unless there's a large empahsis on testing
+ \item Adopting this methodology in large teams can be unwieldly and messy.
+\end{itemize}
+HubSpot usually has small teams of no more than 5 engineers which prevents the messiness that comes with doing this in large teams. Also there's a rather large emphasis on testing at HubSpot to prevent bug filled code being in production. When a bug is found in production and it affects multiple customers, it triggers a Crit-Sit which forces the team responsible to switch to fixing that bug. A post mortem is then also done to discuss what caused the bug, how it can be prevented in future and how it occured in the first place, without any blame being placed on an individual. This process gives teams an incentive to write clean code. \\\\Scope creep can become a problem at times, especially if it's for a major feature. To combat this, having well defined parameters of the base functionality of new features should be declared before any coding is done, and as progress is done on the feature, keeping in constant reference to the core functionality can be useful in preventing scope creep by enabling those working on new features the ability to see when un-necessary things are being added that aren't within the original defined parameters.
+\subsection{Team Structures}
+\includegraphics[scale = 0.5]{Team Structure.png}
+The above image is an image of the team structures in place at HubSpot.
+\subsubsection{\textbf{Roles and Responsibilities}}
+
+\textbf{SEM -  Senior Engineering Manager}
+\begin{itemize}
+	\item Responsible for leading Multiple Teams and Engineering Leads
+	\item Engineering Leads and Technical Leads report back to them directly
+\end{itemize}
+\textbf{EL -  Engineering Lead}
+\begin{itemize}
+\item Responsible for leading a small set of teams
+\item Midpoint between Tech Lead and Senior Engineering Manager
+\item Technical leads report to them
+\end{itemize}
+\textbf{TL -  Team Lead}
+\begin{itemize}
+\item Responsible for leading a team of individual contributors
+\item Responsible for defining and sharing goals and challenges for the team
+\item Helps to grow the skills of engineers in their team, both technically and interpersonal
+\end{itemize}
+\textbf{PM -  Program Manager}
+\begin{itemize}
+\item Works alongside Team Leads to provide solutions to customer problems
+\item Can be on multiple teams/own multiple products
+\item Responsible for creating with the TL goals and guardrails for their product
+\end{itemize}
+\textbf{LD -  Lead Designer}
+\begin{itemize}
+\item Responsible for the Front End Team
+\item Discuss implications in terms of UI/UX for possible new features
+\end{itemize}
+\textbf{IC -  Individual Contributor}
+\begin{itemize}
+\item Part of a team of 3-5 engineers
+\item Reports to a Team Lead
+\item Provides feedback on tasks for the team and possible implementations of said tasks
+\end{itemize}
+From the above image, we can see how the different team structures fit into each other. On the largest level, the \textbf{Engineering Department}, the Senior Engineering Manager oversees the whole department. Under them are Engineering Leads and Team Leads. 
+\\\\
+From there is the \textbf{Triad} who are in charge of discussing the long term vision of an individual team. 
+\\\\
+Finally there's the \textbf{Core Team} of individual contributors being lead by a Team Lead and a Program Manager.
+
+\subsection{Tools}
+At HubSpot we use a large variety of tools to manage the numerous engineering processes a team might have to manage. Tools can largely be split into 3 main categories: \begin{itemize} \item Communication \item Engineering \item Management \end{itemize}
+\subsubsection{\textbf{Communication Tools}}
+\begin{itemize}
+\item Slack
+\item Zoom
+\item G Suite 
+\item Slack Bots
+\end{itemize}
+\subsubsection{\textbf{Engineering}}
+\begin{itemize}
+\item Orion
+\item Blazar
+\item Singularity
+\item Github
+\item SignalFX
+\end{itemize}
+\subsubsection{\textbf{Management}}
+\begin{itemize}
+\item Kepler
+\item Mainsail 
+\item 15Five
+\end{itemize}
+\subsection{Processes}
+\subsection{Communication Strategies}
 \end{document}

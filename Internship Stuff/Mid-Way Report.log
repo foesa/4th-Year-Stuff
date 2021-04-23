@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.23)  16 APR 2021 02:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.23)  23 APR 2021 01:43
 entering extended mode
 **"./Mid-Way Report.tex"
 ("Mid-Way Report.tex"
@@ -275,15 +275,15 @@ LaTeX Font Info:    ... okay on input line 61.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=452.9679pt
-* \textheight=700.50687pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
+* \textwidth=418.25368pt
+* \textheight=591.5302pt
+* \oddsidemargin=17.3571pt
+* \evensidemargin=17.3571pt
+* \topmargin=-7.86334pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -375,7 +375,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--98
 
  []
 
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
@@ -385,7 +385,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--107
 
  []
 
-[3]
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 108--111
 
  []
@@ -400,26 +400,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--121
 
  []
 
-[4] [5] ("Mid-Way Report.aux") ) 
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+[8]
+<Team Structure.png, id=35, 854.19125pt x 623.32875pt>
+File: Team Structure.png Graphic file (type png)
+<use Team Structure.png>
+Package pdftex.def Info: Team Structure.png  used on input line 152.
+(pdftex.def)             Requested size: 427.09459pt x 311.6636pt.
+
+Overfull \hbox (8.84091pt too wide) in paragraph at lines 152--154
+[]
+ []
+
+[9 <./Team Structure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 190--195
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--195
+
+ []
+
+[10] [11] ("Mid-Way Report.aux") ) 
 Here is how much of TeX's memory you used:
- 4196 strings out of 481545
- 68094 string characters out of 2913488
- 318362 words of memory out of 3000000
- 19408 multiletter control sequences out of 15000+200000
- 538694 words of font info for 45 fonts, out of 3000000 for 9000
+ 4206 strings out of 481545
+ 68266 string characters out of 2913488
+ 317382 words of memory out of 3000000
+ 19415 multiletter control sequences out of 15000+200000
+ 539035 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 50i,10n,48p,1224b,183s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/legua/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/legua/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/legua/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/
-legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pf
+ 50i,10n,48p,2032b,247s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\legua\AppData\Local\MiKTeX\2.9\fon
+ts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/legua/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/legua/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/
+legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
 b><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmss10.pfb><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmss12.pfb>
-Output written on "Mid-Way Report.pdf" (5 pages, 102728 bytes).
+/cm/cmr17.pfb><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmss10.pfb><C:/Users/legua/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/legua/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
+Output written on "Mid-Way Report.pdf" (11 pages, 152340 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
+ 74 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
