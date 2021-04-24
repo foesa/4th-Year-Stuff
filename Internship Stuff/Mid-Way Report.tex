@@ -197,24 +197,69 @@ Finally there's the \textbf{Core Team} of individual contributors being lead by 
 At HubSpot we use a large variety of tools to manage the numerous engineering processes a team might have to manage. Tools can largely be split into 3 main categories: \begin{itemize} \item Communication \item Engineering \item Management \end{itemize}
 \subsubsection{\textbf{Communication Tools}}
 \begin{itemize}
-\item Slack
-\item Zoom
-\item G Suite 
+\item Slack\\\\
+\includegraphics[scale=0.07]{slack.png}
+\begin{itemize}
+\item This is the primary means of communication we use at HubSpot
+\item Each team has their own respective slack channels and then there's channels for each step up the hierarchy.
+\item Slack is also used to ask questions to other teams as channels are open for people to jump in and out of.
+\end{itemize}
+\item Zoom\\\\
+\includegraphics[scale=0.2]{zoom.png}
+\begin{itemize}
+\item This tool is used primarily to hold meetings and such within and between teams due to the fact that the entire company is remote.
+\item We also use slack to do pair programming and debugging sessions within my team as some issues require more instantaneous communication than talking on slack can provide.
+\item On team I'm working on,  we also have an ongoing zoom call that is meant to simulate the workspace as we are all on the meeting during the workday so we can reach out for help when we need it.
+\end{itemize}
+\item G Suite \\\\
+\includegraphics[scale=0.1]{gsuite.png}
+\begin{itemize}
+\item G Suite is used primarily to write up documents and such for future plans we have for different products
+\item We also use the G Suite in re-mediation meetings following a Crit-Sit to discuss what went wrong, what caused the issue and what we can do to prevent it in future.  
+\end{itemize}
+\item Jira \\\\
+\includegraphics[scale=0.14]{jira.png}
+\begin{itemize}
+\item Jira is the software we use to manage customer issues about certain parts of our product
+\item Initially,  a customer opens a jira and is assisted by the customer support team,  but when an issue is sufficiently complex that it can't be solved by them,  it gets passed on to the engineering department.
+\item If more than 5 Jiras remain open pertaining to a certain aspect of our product,  this triggers a Critical Situation or Crit-Sit. 
+\end{itemize}
 \item Slack Bots
+\\ At HubSpot,  there's a number of different Slack bots we use to help inform us of any sort of communication that happens on other platforms we may not as actively manage manually.
+\begin{itemize}
+\item Hedwig: This bot helps us monitor new comments on our issues as well as comments made to pull requests.
+\item Orion: This Bot primarily informs us of about the build status of different repositories. It sends a message to who ever is the owner of the most recent push to our GitHub about the status of the build whenever it changes. 
+\item PI Bot: This bot gives us insight into currently running Jobs.  When a job runs and fails or finishes, it sends a message to who ever initiated the job about it's status. 
+\item JiraHub: This bot sends a message to which engineer is assigned a Jira and also when there's an update on the Jira,  such as a comment from other engineers  or contact from the customer support team. 
+\end{itemize}
 \end{itemize}
 \subsubsection{\textbf{Engineering}}
 \begin{itemize}
 \item Orion
-\item Blazar
+\begin{itemize}
+\item Orion is the primary tool we use for deploying and managing builds of code. 
+\item When an engineer pushes some code to GitHub,  a new build is triggered in Orion.  Using the integrations built into slack,  a message is sent to the engineer if the build fails and when the state of a build changes also.
+\item Orion is also used to manage when we push code to QA and production.  When a pull request is closed,  a build is usually pushed to QA to be tested further and see what kind of behaviour could occur if it were to be pushed to Prod. 
+\item If it passes all extra testing in QA,  it is then pushed to Prod. 
+\end{itemize}
 \item Singularity
-\item Github
-\item SignalFX
+\begin{itemize}
+\item Singularity is the software we use to manage running jobs. 
+\item Jobs are processes that often only do one thing such as fix data in customer accounts.
+\item When a job runs and the status of it changes,  a message is sent to the person who initated the job via a slack bot. 
+\end{itemize}
+\item Github \\\\
+\includegraphics[scale=0.2]{github.png}\\\\
+GitHub is what we use to manage our code base and for version control of our code base also.  There are multiple repositories in HubSpot that all belong to different teams. 
 \end{itemize}
 \subsubsection{\textbf{Management}}
 \begin{itemize}
-\item Kepler
+\item Kepler \\\\
+Kepler is used as an overview of all our systems,  code,  jobs and alerts.  We use this as the first port-of-call for all our systems as we can see the current status and manage them directly via the dashboard.  Kepler also provides numerous metrics for our systems such as downtime, accesses and the current network traffic.
 \item Mainsail 
 \item 15Five
+\item Blazar
+\item SignalFX
 \end{itemize}
 \subsection{Processes}
 \subsection{Communication Strategies}
