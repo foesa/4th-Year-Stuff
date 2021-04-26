@@ -123,14 +123,11 @@ Reflection: Taking on the feedback from the previous week definetly helped me to
 \section{Technology Management Processes}
 At HubSpot there are multiple process in place to manage the software engineering process.
 \subsection{Project Management Methods}
-The actual methodology in place tends to vary on a team by team basis. The technical lead(TL) for the team usually tries to find what works for the team and then adapt a strategy based off this. \\ In regards to the team I'm working with, our style is the hybridization of the agile and scrum style of project management. The work for our team is broken up into 2 week sprints where at the beginnig of a new sprint, we look at our issues and then assign tasks as necessary to be done over the next 2 weeks. This works for our team as we work on multiple different repositories and projects so we need a little more flexibility than a traditional waterfall style of management would give us. Our team sometimes may hve to switch tasks to deal with certain situations that might arize called Crit-Sits where we need to down tools and focus on fixing an issue that is currently impacting customers. These issues can be quite complex to solve and require a lot of time to fix so this style of management help us be able to pivot to new tasks quickly as we can pivot from whatever we were doing to something else entirely as our sprints are short enough that we can reprioritize without having the adverse affect of being too behind schedule. In terms of when we have meetings to discuss what tasks need to be done and the current progress of tasks, we have daily stand ups at different times depending on if we're meeting with our PM who's in the United States. \\ We also have 2 other weekly meetings to discuss our systems: \begin{itemize} \item \textbf{Backlog Grooming}: This is a weekly meeting to asses the state of the major systems our team oversee and see if any of them require any major maintenance to be done due to unusual levels of downtime and such. \item \textbf{Ops Review}: This is another weekly meeting we hold with our PM to see what issues we have on our board. We use this meeting to reasses our priorities and shift focus to other things if necessary. \\ \end{itemize} 
+The actual methodology in place tends to vary on a team by team basis. The technical lead(TL) for the team usually tries to find what works for the team and then adapt a strategy based off this. 
+\\ In regards to the team I'm working with, our style is the hybridization of the agile and scrum style of project management. The work for our team is broken up into 2 week sprints where at the beginnig of a new sprint, we look at our issues and then assign tasks as necessary to be done over the next 2 weeks. This works for our team as we work on multiple different repositories and projects so we need a little more flexibility than a traditional waterfall style of management would give us. Our team sometimes may hve to switch tasks to deal with certain situations that might arize called Crit-Sits where we need to down tools and focus on fixing an issue that is currently impacting customers. These issues can be quite complex to solve and require a lot of time to fix so this style of management help us be able to pivot to new tasks quickly as we can pivot from whatever we were doing to something else entirely as our sprints are short enough that we can reprioritize without having the adverse affect of being too behind schedule. In terms of when we have meetings to discuss what tasks need to be done and the current progress of tasks, we have daily stand ups at different times depending on if we're meeting with our PM who's in the United States. In terms of long term management of projects, a group called the triad is responsible for the long term vision of our team.
+\\ We also have 2 other weekly meetings to discuss our systems: \begin{itemize} \item \textbf{Backlog Grooming}: This is a weekly meeting to asses the state of the major systems our team oversee and see if any of them require any major maintenance to be done due to unusual levels of downtime and such. \item \textbf{Ops Review}: This is another weekly meeting we hold with our PM to see what issues we have on our board. We use this meeting to reasses our priorities and shift focus to other things if necessary. \\ \end{itemize} 
 
-In terms of long term management of projects, a group called the triad is responsible for the long term vision of our team.
- \begin{itemize}  
- \item Our TL and our program manager(PM) come together with the lead designer to discuss what's the next milestone or objective for our team and thn decide what are the major deliverables necessary to make this a reality. 
- \item From there these major deliverables are then broken down into smaller deliverables by our TL and PM and brought to the team. These smaller deliverables are then discussed with the team to see what needs to be done first and what blocks other work that needs to be done. 
- \item Issues are then created for each of these individual tasks and are added to our ZenHub board. Some issues may be tagged as investigations if it's not immediatly clear what work needs to be done in order for the issue to be closed, whilst others may be flagged as implementaions, where the team may need to get together to discuss how's the best way to implement more complex features and such.
-\\ \end{itemize}
+
 \subsubsection{\textbf {Strengths and Weaknesses}}
 This approach to management has it's strengths and weaknesses of course.
 \\
@@ -235,13 +232,8 @@ At HubSpot we use a large variety of tools to manage the numerous engineering pr
 \end{itemize}
 \subsubsection{\textbf{Engineering}}
 \begin{itemize}
-\item Orion
-\begin{itemize}
-\item Orion is the primary tool we use for deploying and managing builds of code. 
-\item When an engineer pushes some code to GitHub,  a new build is triggered in Orion.  Using the integrations built into slack,  a message is sent to the engineer if the build fails and when the state of a build changes also.
-\item Orion is also used to manage when we push code to QA and production.  When a pull request is closed,  a build is usually pushed to QA to be tested further and see what kind of behaviour could occur if it were to be pushed to Prod. 
-\item If it passes all extra testing in QA,  it is then pushed to Prod. 
-\end{itemize}
+\item Blazar\\\\
+Blazar is used to monitor and run different builds of Github Repositories. Blazar only builds the part of the repository that have changed when a commit is pushed . It reports back to Orion on the status of a build using GitHub Webhooks.
 \item Singularity
 \begin{itemize}
 \item Singularity is the software we use to manage running jobs. 
@@ -256,11 +248,27 @@ GitHub is what we use to manage our code base and for version control of our cod
 \begin{itemize}
 \item Kepler \\\\
 Kepler is used as an overview of all our systems,  code,  jobs and alerts.  We use this as the first port-of-call for all our systems as we can see the current status and manage them directly via the dashboard.  Kepler also provides numerous metrics for our systems such as downtime, accesses and the current network traffic.
-\item Mainsail 
-\item 15Five
-\item Blazar
-\item SignalFX
+\item 15Five \\\\
+15five is continuous performanve management software that is used at HubSpot to manage and track the goals and performance of employees. Every week, employees fill out their goals and objectives for the week and then at the 1:1 meeting with their TL, these goals are discussed. 15five also can be used to give feedback to employees on their performance.
+\item Orion
+\begin{itemize}
+\item Orion is the primary tool we use for deploying and managing builds of code. 
+\item When an engineer pushes some code to GitHub,  a new build is triggered in Orion.  Using the integrations built into slack,  a message is sent to the engineer if the build fails and when the state of a build changes also.
+\item Orion is also used to manage when we push code to QA and production.  When a pull request is closed,  a build is usually pushed to QA to be tested further and see what kind of behaviour could occur if it were to be pushed to Prod. 
+\item If it passes all extra testing in QA,  it is then pushed to Prod. 
+\end{itemize}
+\end{itemize}
+\textbf{Tool Optimizations} \\\\
+A wide array of tools are used at HubSpot to manage a menagerie of microservices and such. But the sheer number of tools can be rather overwhelming as to what to use for what service. Some possible suggestions I would propose to reduce complexity would be: 
+\begin{itemize} 
+\item Reducing the number of tools overall and compartmentalizing the tools to what services their most relevent for. At the moment, tools are strewn around somewhat and often deciphering the correct tool to use can be a bit of a minefield. By reducing the tools used and specifying what they should be used for, this can be avoided or at the very least reduce the learning curve. 
+\item There's an onboarding at the moment that introduces you to the major tools used as an engineer but it fails to really deliver how best to use these tools accordingly. To help with this, a kind of auxiliary onboarding teahing how best to use your tool according to your department would be helpful.
 \end{itemize}
 \subsection{Processes}
+ \begin{itemize}  
+ \item Our TL and our program manager(PM) come together with the lead designer to discuss what's the next milestone or objective for our team and thn decide what are the major deliverables necessary to make this a reality. 
+ \item From there these major deliverables are then broken down into smaller deliverables by our TL and PM and brought to the team. These smaller deliverables are then discussed with the team to see what needs to be done first and what blocks other work that needs to be done. 
+ \item Issues are then created for each of these individual tasks and are added to our ZenHub board. Some issues may be tagged as investigations if it's not immediatly clear what work needs to be done in order for the issue to be closed, whilst others may be flagged as implementaions, where the team may need to get together to discuss how's the best way to implement more complex features and such.
+\\ \end{itemize}
 \subsection{Communication Strategies}
 \end{document}
