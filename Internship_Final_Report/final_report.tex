@@ -1,0 +1,104 @@
+\documentclass[a4paper,oneside,11pt]{book}
+%----------------------------------------------------------------------------------------
+%	WELCOME!
+%   It is probably worth having a read through this file to set up the broad parameters.
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	COVER PAGE
+%   The cover page is laid out in title/title.tex. You can choose a colour
+%   or black and white logo
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	THESIS INFORMATION
+%   Put title, author name, degree, type of work, school, department in here
+%   It will be used for the title page and for the embedded PDF information
+%----------------------------------------------------------------------------------------
+
+\newcommand{\thesistitle}{Internship Technical Report} % Your thesis title, this is used in the title and abstract
+\newcommand{\degree}{Computer Science} % Your degree name, this is used in the title page and abstract
+\newcommand{\typeofthesis}{Master in Integrated Computer Science} % dissertation, Final Year Project, report, etc.
+\newcommand{\authorname}{Efeosa Eguavoen} % Your name, this is used in the title page and PDF stuff
+%% Comment out the next line if you do not want your ID to appear
+\newcommand{\supervisor}{Supervisor: Tim Fernando}
+\newcommand{\school}{\href{http://www.scss.tcd.ie}{School of Computer Science and Statistics}} % Your school's name and URL, this is used in the title page
+
+
+\AtBeginDocument{
+  \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+  \hypersetup{pdftitle=\thesistitle} % Set the PDF's title to your title
+  \hypersetup{pdfsubject=\degree} % Set the PDF's keywords to your keywords
+}
+
+%% Language and font encodings
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+%% Bibliographical stuff
+\usepackage[round,sort,comma,numbers]{natbib}
+
+%% Document size
+% include showframe as an option if you want to see the boxes
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,headheight=12pt]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage[pdftex]{graphicx}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{caption} % if no caption, no colon
+\usepackage[parfill]{parskip}    % Begin paragraphs with an empty line rather than an indent
+\usepackage{setspace} % to permit one-and-a-half or double spacing
+\usepackage{enumerate} % fancy enumerations like (i) (ii) or (a) (b) and suchlike
+\usepackage{booktabs} % To thicken table lines
+\usepackage{fancyhdr}
+
+\pagestyle{plain} % Embrace simplicity!
+
+\renewcommand{\theequation}{\arabic{equation}} %% use continuous equation numbers
+
+%% Format Chapter headings appropriately
+\usepackage{titlesec}
+\titleformat{\chapter}
+{\normalfont\huge\bfseries}{\thechapter}{1cm}{} 
+
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat{\subsubsection}{}{\thesubsubsection}{1em}{\itshape\bfseries}
+
+\title{\thesistitle}
+\author{\authorname}
+
+\frontmatter
+\begin{document}
+\input{title/title.tex}
+\pagenumbering{roman}
+\section*{\Huge{Declaration}}
+\vspace{1cm}
+I hereby declare that this report is entirely my own work and that it has not been submitted as an exercise for a degree at this or any other university.
+
+\vspace{1cm}
+I have read and I understand the plagiarism provisions in the General Regulations of the University Calendar for the current year, found at \url{http://www.tcd.ie/calendar}.
+\vspace{1cm}
+
+I have also completed the Online Tutorial on avoiding plagiarism `Ready Steady Write', located at
+\url{http://tcd-ie.libguides.com/plagiarism/ready-steady-write}.
+\vspace{3cm}
+
+Signed:~\rule{5cm}{0.3pt}\hfill Date:~\rule{5cm}{0.3pt}
+
+\newpage
+
+\onehalfspacing\raggedright %\raggedright turns of justification and hypenation
+
+\tableofcontents
+\newpage
+%\setlength{\parindent}{0.5cm}
+\doublespacing
+
+\mainmatter
+\input{Goals/Goals.tex}
+
+
+\end{document}

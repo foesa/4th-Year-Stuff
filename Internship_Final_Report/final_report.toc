@@ -1,0 +1,5 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Goals}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Technological Goals}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Soft Skill Goals}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Major Takeaways}{4}{section.1.3}%
