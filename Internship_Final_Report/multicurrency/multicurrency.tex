@@ -1,0 +1,44 @@
+\chapter{Project 1: Multi-Currency Consumer}
+
+\section{Introduction}
+During my time at HubSpot I was assigned 2 major tasks that I worked on over the course of the few months of my placement. To get me started and introduced to the tech stack at HubSpot, I first started with an onboarding project that enabled me to become somewhat familiar with the stack by using many of the major tools and languages that are commonly used in HubSpot. \\ Once I had completed this, I was introduced to my first major task, building a multicurrency consumer to make currency fields editable in the UI. This was part of a wider set of changes to multiple repositories my team owned to standardise fields so we could make the prices of items and such editable in the UI, which was a major pain point for our customers.\newline \\ When I was first presented with this task, I thought it would be fairly simple as on the surface, it seemed like simply getting what type of multicurrency change is being made and then just adding the field to the database. Once I had gotten started, it became much more complex and required multiple steps and code refactors whilst the project was being built. \\ For example, when a user makes a change to a multicurrency to their HubSpot portal, the consumer would then process what type of change was made (addition/deletion being the only two the conusmer was concerned with) and from there, the consume would create a a HubSpot standardized field and place it into the database for the user alongside other fields such as the label to be displayed in the UI in the case of an addition and in the case of a deletion, the consumer would remove the corresponding fields from the database. \newline \\ This change seemed pretty simple but there's multiple hidden requirements that aren't immediately obvious. For instance, what should be done for all the multicurrencies that are already in a user's portal? What should be in the case where a user doesn't yet have any multicurrencies in their portal and decides to add one? How are calls to/from the database to be handled? Questions like these and many others needed to be answered and dealt with before and during the coding process. \\ Luckily for me, my team had started some of the necessary work making it easier for me to get to coding. For instance, my team already had created the Kafka producer and set up much of the infrastructure so I just had to work with it to do complete this task.
+
+\section{Design Approach and Architecture}
+To complete this task, I split the overall task into multiple subtasks to be completed:
+\begin{itemize}
+\item Standardized Multicurrency labels and fields Generator
+\item Build Kafka Consumer
+\begin{itemize}
+\item Filter Kafka message into Add/Delete
+\item Pre-build request body for processed message
+\item Send request
+\end{itemize}
+\item Create Internal Endpoints for adding/deleting multicurrencies
+\item Build Wrappers for hitting endpoints to be used by Kafka Consumer
+\end{itemize}
+
+I went with a top down approach initially when defining each of the individual components and fleshing out components as I went along. I decided to use this as I was sure there may be some hidden requirements that may arise during the coding process. Also, the top down approach to software engineering is much more requirements driven and was more in-line with clean code practices as I could avoid writing code I may not need. For some of the individual components, I did go with more of a bottom up approach like the kafka consumer, as this consumer could be reused for something elsewhere with some changes to the functionality. \newline \\ For the overall architecture, I went with one of the more common design patterns, the \textbf{Model-View-Controller (MVC)} system. I went with MVC due to the scalability it provides alongside the support for asynchronous techniques like Apache Kafka which is a major framework in use at HubSpot.
+
+\subsection{Model-View-Controller (MVC)}
+MVC is a common architecture pattern used in web based applications. MVC separates out the layers of business logic and data interactions(model) from the presentation(view) and intermediary between the two layers(controller). This pattern is so popular as it decouples each of the major aspects of the design from each other and is also highly scalable due to how modular the design is.
+
+
+\subsubsection{Model}
+The data and business logic of the application are wrapped in the model layer.
+It's frequently made up of a number of interconnected domain objects.
+The models represent the nouns or entities in the system, such as user or order, and interact with any of the other layers of the system.  
+\newline The model layer, on the other hand, includes not just models but also validators, methodologies, and any other element that directly affects or distorts the underlying data of the application. \newline \\ 
+Each model has a user interface that reflects the logical functions that can be performed on the data it represents.
+An illustration of the capabilities contained in an application's model layer: A \textit{FullName} method on a User class returns a merger of the first and last names associated with the user it depicts. The same object also has an \textit{UpdateName} function that updates the corresponding name in the database.
+
+\subsubsection{View}
+\subsubsection{Controller}
+
+\section{Implementation}
+\subsection{Standardized Labels and Fields Generator}
+\subsection{Kafka Consumer}
+\subsection{Endpoints}
+\subsection{Wrappers}
+
+\section{Evaluation and Testing}
+\section{Analysis and Possible Changes}
