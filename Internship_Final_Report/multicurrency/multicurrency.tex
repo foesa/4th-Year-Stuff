@@ -35,9 +35,20 @@ The model Layer often utilises some form of \textbf{Object Relational Mapping}, 
 \subsubsection{View}
 The 'View' layer is responsible for the visual layer of the model.  This represents the graphical user interface a user may interact with. Views perform as the output of the system, whereby data from the model is represented.  In many MVC architectures,  the view is sensitive to changes in the data held in the model and hence self updates to reflect any new changes in the data.  The view itself does not transformations or alterations of the data itself,  it just acts as thin layer between the model and the controller.  Data from the user may be inputed in the view layer but is ultimately sent to the controller to be dealt with.
 \subsubsection{Controller}
+The controller layer is primarily responsible for processing user input.  A controller normally has a 1-to-1 relationship with a view or a 1-to-many relationship with a series of views.  When a user inputs data via an interface in the view layer,  this triggers an event to occur which is dealt with by the controller layer. The controller layer could for instance instruct the view layer to resize itself if a user resizes the size of the input window.  Another example is to update the data in the model and hence update the view layer if a user inputs new data into the view layer initially.  Controllers have permissions to frequently access the model layer and re-construct and transform the data in that layer.
 
 \section{Implementation}
+For the implementation of this task, it was split into multiple sub-tasks with each part being tested individually before the next part was created.
 \subsection{Standardized Labels and Fields Generator}
+
+The first task I worked on was creating a function that would take in some multicurrency and then convert it to a HubSpot standardized field. \newline For example,  the function would take in a currency like \textit{USD} and then return it in the form \textit{hs\_external\_price\_USD}.  \newline Initially this change was simple to write as it required only the name of the currency that is being used to create the field according to the ISO 4217 standard.  \newline \\ As work progressed on this function,  it was refactored slightly and given some more utility to be able to generate more fields that had to do with multicurrencies.  A function to create the internal version of the fields was also created alongside the labels that would be displayed in the UI on the page in a users portal where multicurrencies would be managed.  \newline This task took some time to get to production as there was a number of comments on the pull requests that needed to be implemented as it was my first major pr.  This change showed me how to write code according to the level that's expected at HubSpot.
+
+\subsubsection{Problems} 
+The major problem that arose was that for some 3rd party developers didn't use the ISO 4217 standard for the currencies so matching them in the syncing engine wasn't possible.  \newline To get around this issue,  we first of all had to check if the inputted multicurrency was ISO 4217 compliant and then from there would generate the field.  Any input data that was not compliant would then return an error.
+
+\subsubsection{Testing}
+In terms of testing for this change,  I wrote a series of unit tests to test the different expected behaviours of this change.  The tests were written in advance of the code being written as at HubSpot test-driven development is a big thing and is greatly encouraged. 
+
 \subsection{Kafka Consumer}
 \subsection{Endpoints}
 \subsection{Wrappers}
