@@ -29,9 +29,11 @@ It's frequently made up of a number of interconnected domain objects.
 The models represent the nouns or entities in the system, such as user or order, and interact with any of the other layers of the system.  
 \newline The model layer, on the other hand, includes not just models but also validators, methodologies, and any other element that directly affects or distorts the underlying data of the application. \newline \\ 
 Each model has a user interface that reflects the logical functions that can be performed on the data it represents.
-An illustration of the capabilities contained in an application's model layer: A \textit{FullName} method on a User class returns a merger of the first and last names associated with the user it depicts. The same object also has an \textit{UpdateName} function that updates the corresponding name in the database.
-
+An illustration of the capabilities contained in an application's model layer: A \textit{FullName} method on a User class returns a merger of the first and last names associated with the user it depicts. The same object also has an \textit{UpdateName} function that updates the corresponding name in the database. The same object could then use a Validator instance to make sure none of the fields are empty before being placed into the database.  \newline \\
+The model Layer often utilises some form of \textbf{Object Relational Mapping},  which is a layer of abstraction which is designed to transfer data from the the scalar values used in database storage to the objects used in object orientated programming languages and vice versa.  While a traditonal SQL database is used in many instances,  noSQL databases and/or web services that perform some sort of data persistence could be used as the database layer instead. 
+\newline In many versions of the model class,  a set of static methods which utilise the ORM to search for and instantiate instances of the model.
 \subsubsection{View}
+The 'View' layer is responsible for the visual layer of the model.  This represents the graphical user interface a user may interact with. Views perform as the output of the system, whereby data from the model is represented.  In many MVC architectures,  the view is sensitive to changes in the data held in the model and hence self updates to reflect any new changes in the data.  The view itself does not transformations or alterations of the data itself,  it just acts as thin layer between the model and the controller.  Data from the user may be inputed in the view layer but is ultimately sent to the controller to be dealt with.
 \subsubsection{Controller}
 
 \section{Implementation}
