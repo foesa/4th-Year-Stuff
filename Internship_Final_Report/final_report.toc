@@ -15,7 +15,15 @@
 \contentsline {subsubsection}{Problems}{9}{subsection.2.3.1}%
 \contentsline {subsubsection}{Testing}{9}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Kafka Consumer}{9}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Endpoints}{9}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Wrappers}{9}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Evaluation and Testing}{9}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Analysis and Possible Changes}{9}{section.2.5}%
+\contentsline {subsubsection}{Building The Base Consumer}{9}{subsection.2.3.2}%
+\contentsline {subsubsection}{Filtering Kafka Messages}{9}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Pre-building The Request Body}{10}{subsection.2.3.3}%
+\contentsline {subsubsection}{Sending the Request}{10}{subsection.2.3.3}%
+\contentsline {subsubsection}{Problems}{10}{subsection.2.3.3}%
+\contentsline {subsubsection}{Testing}{10}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Endpoints}{10}{subsection.2.3.4}%
+\contentsline {subsubsection}{Problems}{11}{subsection.2.3.4}%
+\contentsline {subsubsection}{Testing}{11}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Wrappers}{11}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}Evaluation and Testing}{11}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Analysis and Possible Changes}{11}{section.2.5}%

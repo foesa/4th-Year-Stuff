@@ -50,7 +50,36 @@ The major problem that arose was that for some 3rd party developers didn't use t
 In terms of testing for this change,  I wrote a series of unit tests to test the different expected behaviours of this change.  The tests were written in advance of the code being written as at HubSpot test-driven development is a big thing and is greatly encouraged. 
 
 \subsection{Kafka Consumer}
+The next task I worked on was creating kafka consumer to consume messages from the kafka producer queue. This was a much larger task than the previous task so I split it up into smaller pieces to make the task more manageable. This aspect of the task would fall into the ''Controller'' layer of the MVC framework as all data operations are performed here before being sent to the database or 'Model'
+
+\subsubsection{Building The Base Consumer}
+The base kafka consumer was constructed from an interface for building kafka consumers that was already pre-created. The consumer was subscribed to a topic that was responsible to publish messages concerning multicurrency updates from a producer. When a message gets published to the queue, the kafka consumer would then grab the message from the queue and then process it accordingly. 
+
+\subsubsection{Filtering Kafka Messages}
+The next major part of the consumer I wrote was to grab the type of request in the message and from there, process the message accordingly. To process the message, I used a switch statement to filter the data based off the type in the message body. The currency being updated in question is then also extracted from the message body.
+
+\subsection{Pre-building The Request Body}
+Once the major aspects of the request has been collected from the message body, the request body is then created. The label's, standardized fields and such are all created here.
+
+\subsubsection{Sending the Request}
+Once all the previous steps have been completed, the request is then sent to the corresponding internal endpoint, using the previously built request body. 
+
+\subsubsection{Problems}
+One of the major problems in creating this consumer was figuring out how to prevent messages being processed twice. Luckily, kafka has numerous guarantees that ensure that each message is processed exactly once making this a none issue. Another issue was figuring out how to scale this to work on a large scale. To solve this issue, kafka enables multiple kafka workers to be subscribed to a topic so more workers can be spun up as necessary or killed as traffic changes. 
+
+\subsubsection{Testing}
+To test this change, a number of integration tests were written to make sure each of the core components interacted with each other as necessary. As each of the individual components do different things, unit testing the overall system wasn't possible. Each of the individual components were unit tested as necessary. One bug that was encountered in testing was getting the correct multicurrency field from the topic. To fix this issue, I had to re-parse the data given from the topic into ISO 4217 compliant fields.
+
 \subsection{Endpoints}
+The next major component that needed to be written was the internal endpoints that would hit the database and update the data in there. This would compromise part of the 'Model' aspect of the MVC framework as it's responsible for framework operations. The endpoints needed to be internal as we didn't want to expose them to external developers and also it allowed us to use the '@internal' annotation to allow it to be secure by using Oauth. \newline \\ To create the endpoints, a path was first defined for both the add and delete endpoints in seperate functions. From here, we could then hit the database directly using some ORM methods. This component didn't take much time to create as it was a relatively easy aspect to code as it was basically a partial implementation of a REST api. 
+
+\subsubsection{Problems}
+One issue that I faced writing this was dealing with verification as I had initially planned on creating an open endpoint and hitting it as necessary. But I kept getting errors due to verification due to the fact I was trying to hit internal database's via external calls. To solve this, I made the endpoints internal which enabled stopped these errors from appearing as Oauth was used for verification automatically so I didn't need to worry about security.
+
+\subsubsection{Testing}
+To test this change, I did some integration testing instead of End-to-End testing as external users wouldn't have access to this endpoint so all that mattered was that it performed according to the parameters we expected. I did some asserts on the expected response from the endpoints, and mocked out the calls to the database as this was beyond the scope of the test. 
+
+
 \subsection{Wrappers}
 
 \section{Evaluation and Testing}
