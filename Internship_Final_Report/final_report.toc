@@ -24,6 +24,7 @@
 \contentsline {subsection}{\numberline {2.3.4}Endpoints}{10}{subsection.2.3.4}%
 \contentsline {subsubsection}{Problems}{11}{subsection.2.3.4}%
 \contentsline {subsubsection}{Testing}{11}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Wrappers}{11}{subsection.2.3.5}%
-\contentsline {section}{\numberline {2.4}Evaluation and Testing}{11}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Analysis and Possible Changes}{11}{section.2.5}%
+\contentsline {subsection}{\numberline {2.3.5}Wrappers for Endpoints}{11}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}Evaluation and Testing}{12}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Problems encountered}{12}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Analysis and Possible Changes}{12}{section.2.5}%
