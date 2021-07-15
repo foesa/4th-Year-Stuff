@@ -1,0 +1,54 @@
+\chapter{Weekly Reports}
+\section{Week 9}
+This week, I re-orientated back to working on the Kafka Consumer. I had shifted focus from it for a few weeks as my team was focused on leaving Code Red which required us all to focus on doing the Hublet based work. As it had been a few weeks since I had last looked at the consumer, I spent some time re-familiarizing myself with it and figuring out what was the next step from where I had previously left it. \newline This week I had a meeting with my team lead to discuss the crit-sit that had occurred. I got some reassurance from my team lead not to take it personally or whatever and to just focus on continue working to my capacity as these things tend to happen. 
+
+\subsection{Reflection}
+On reflection, I should have not left the kafka consumer so suddenly and written myself some notes on how to get started back on it when I returned to work on it as I spent a few days just re-reading my own code that could have been spent instead making some more progress on the consumer. Also, I realised how important it is to have a good team lead on your team that can provide you with reassurance and such when things don't go according to plan and can help you get back into the swing of things.
+\section{Week 10}
+The major task this week was to split up the task of making the whole consumer into smaller, actionable parts. After coming up with a plan of all the parts that needed to be done, I started on adding the filtering logic to the consumer to check what sort of message is being sent for processing. This wasn't too difficult and was completed and sent to pr by the end of the week. \newline This week I had a 1-1 meeting with an intern on the security team in the states. It was interesting getting to see what other sort of projects interns get to work on at HubSpot and also advanced my goal of meeting new people and expanding my network.
+
+\subsection{Reflection}
+In hindsight, splitting up the tasks for the kafka consumer definitely helped me to speed up the process of getting it done as I had more focus on what I was doing each week and helped me to narrow in on what was important and not to get caught up trying to get it all to work all in one go. 
+\section{Week 12}
+This week, the primary focus was to create the function that would create the request body that would then be placed as part of the request to be sent to one of the endpoints. For this, I used a builder pattern as other classes have similar methods so I reused some of the code in those classes and just tweaked it for use here. Testing this change wasn't particularly difficult as it was just a matter of doing a series of asserts on the different fields in the class. \newline This week, a new intern joined the team. I was instructed to kind of show him the different products our team is responsible for and what our team mission is.
+
+\subsection{Reflection}
+The new intern joining my team really gave me some perspective on how far I had come from when I started at HubSpot. A lot of the things that I had struggled with initially like getting to grips with the different tools and the code base I no longer had issues with but could even show another person tips and tricks I had learnt from using them. This really helped me to put my growth into perspective. 
+\section{Week 13}
+This week the major thing I worked on was writing the endpoints that the kafka consumer would hit to send data to the database. There were some examples of endpoints in the database already so I could use those as a sort of framework for the 2 new endpoints I was introducing. I initially had some issues with verification but I switched the endpoints to become internal and that solved a lot of the issues. \newline This week there was a talk from the CTO of HubSpot, Dharmesh Shah. All the interns were invited to hear him speak and it was really interesting hearing about how HubSpot came about as he was one of the co-founders of the company. 
+
+\subsection{Reflection}
+I think the way I wrote the endpoints could have been more robust. While it's secure and will work, I thought the code was slightly messy as I rushed through it slightly as I wanted to move on to something else. The testing for this also wasn't as thorough as I'd have liked, I only wrote a series of unit tests and didn't perform an integration test with the other components. 
+
+\section{Week 14}
+The final part of the consumer I wrote this week, the wrappers for the endpoints. The wrappers were there for re-usability so other classes could reuse the endpoints as necessary. The testing for these wrappers was kept minimal as they were just code covering the endpoints that were previously tested. 
+
+\subsection{Reflection}
+This week I learnt about why having wrappers and such is so important. Having proprietary methods to access frequently used endpoints and such can really cut down on code duplication and also it makes it a lot easier to integrate into other projects as you can just use a builder pattern to create your request. 
+
+\section{Week 15}
+The main focus of this week was to do some thorough testing of the consumer from end to end. While each of the individual parts were working as intended, a full end to end test was necessary to make sure it worked as intended for users. Some bugs were encountered while writing the consumer which took a while to fix. \newline This week our team also rebranded from Flagship Integrations to ERP-Strategic Integrations as the focus of our team and our vision was shifting to be more of a toolbox for having the core processes needed to keep companies running. 
+
+\subsection{Reflection}
+This week, I learnt about how important the different types of testing are. If I hadn't done the end to end testing, I wouldn't have found some of the bugs in the code that I had encountered. Unit testing is fine when you're only working on smaller changes and not on larger systems, but using a mixture of unit testing, integration testing and end to end testing is the best way to make sure a system is tested exhaustively. 
+
+\section{Week 16}
+For my final week, I spent the majority of it doing clean up on the consumer and handing off my remaining tasks to my team mates. Whilst I had completed the consumer, there was still some other work remaining for making line items editable I couldn't get to so I transferred this on to the team to see it to completion. 
+
+\section{Final Reflective Diary}
+From working at HubSpot, I've learnt a lot about what it's like to work and be part of a team. Some of the major takeaways from the internship are as follows: 
+
+\subsection{Ask Questions}
+One of the most important things I've learnt over the course of the internship is how important it is to ask questions. When you start working at a new company with a new set of tools, a whole new code base it can be quite overwhelming. My first instinct was  to try tough it out but this was a mistake, I should have asked for help sooner which would have helped me on ramp sooner. I learnt that taking a small amount of time like 30 minutes or so to attempt things myself and then asking for help is the best way to get things done and moving as I would know enough to be know what questions to ask that would unblock me.
+
+\subsection{Get Familiar With The Tools}
+This was something I found incredibly useful and helped me to increase my productivity. Being comfortable with my development tools and learning the different IDE shortcuts saved me a few minutes constantly which added up over the course of the internship.
+
+\subsection{Taking Responsibility For Your Work}
+A major thing I found to be important was taking ownership of your work and being the one responsible for it. Being an intern it's easy to fall into the misconception that what you do doesn't really matter and you can make mistakes and nothing will happen, but this is a big misconception. I found that from breaking things that the work I do does have a real impact on our customers and that it goes beyond me with whatever I do. It's important to own up when you make mistakes and participate in conversations at work as you're part of the team and aren't treated differently just because you're an intern. Taking pride in your work and executing to the full extent of your ability is a good way to show ownership.
+
+\subsection{Ask For Feedback}
+At HubSpot, I had weekly meetings to give and receive feedback from my manager that was invaluable to my growth over my time there. Feedback is imperative to your growth as you often don't know in what sectors you may be lacking and in what sectors you may be strong in. Feedback is a great way to figure this out. While not all feedback is positive, not taking it personally and understanding you're being told this as your manager wants you to grow and be the best engineer you can be is important.
+
+\subsection{Setting Goals}
+The course of an internship is over quite a long time so it can be quite difficult to stay on track and you can drift somewhat and stagnate. Having goals and things you're working towards can keep you on track and keep you focused. Taking active steps towards your goals can help you grow faster and will keep you motivated as you work.
