@@ -1,7 +1,7 @@
 \chapter{Project 1: Multi-Currency Consumer}
 
 \section{Introduction}
-When I was first presented with this task, I thought it would be fairly simple as on the surface, it seemed like simply getting what type of multicurrency change is being made and then just adding the field to the database. Once I had gotten started, it became much more complex and required multiple steps and code refactors whilst the project was being built. \\ For example, when a user makes a change to a multicurrency to their HubSpot portal, the consumer would then process what type of change was made (addition/deletion being the only two the conusmer was concerned with) and from there, the consume would create a a HubSpot standardized field and place it into the database for the user alongside other fields such as the label to be displayed in the UI in the case of an addition and in the case of a deletion, the consumer would remove the corresponding fields from the database. \newline \\ This change seemed pretty simple but there's multiple hidden requirements that aren't immediately obvious. For instance, what should be done for all the multicurrencies that are already in a user's portal? What should be in the case where a user doesn't yet have any multicurrencies in their portal and decides to add one? How are calls to/from the database to be handled? Questions like these and many others needed to be answered and dealt with before and during the coding process. \\ Luckily for me, my team had started some of the necessary work making it easier for me to get to coding. For instance, my team already had created the Kafka producer and set up much of the infrastructure so I just had to work with it to do complete this task.
+During my time at HubSpot I was assigned 2 major tasks that I worked on over the course of the few months of my placement. To get me started and introduced to the tech stack at HubSpot, I first started with an onboarding project that enabled me to become somewhat familiar with the stack by using many of the major tools and languages that are commonly used in HubSpot. \\ Once I had completed this, I was introduced to my first major task, building a multicurrency consumer to make currency fields editable in the UI. This was part of a wider set of changes to multiple repositories my team owned to standardise fields so we could make the prices of items and such editable in the UI, which was a major pain point for our customers.\newline \\ When I was first presented with this task, I thought it would be fairly simple as on the surface, it seemed like simply getting what type of multicurrency change is being made and then just adding the field to the database. Once I had gotten started, it became much more complex and required multiple steps and code refactors whilst the project was being built. \\ For example, when a user makes a change to a multicurrency to their HubSpot portal, the consumer would then process what type of change was made (addition/deletion being the only two the conusmer was concerned with) and from there, the consume would create a a HubSpot standardized field and place it into the database for the user alongside other fields such as the label to be displayed in the UI in the case of an addition and in the case of a deletion, the consumer would remove the corresponding fields from the database. \newline \\ This change seemed pretty simple but there's multiple hidden requirements that aren't immediately obvious. For instance, what should be done for all the multicurrencies that are already in a user's portal? What should be in the case where a user doesn't yet have any multicurrencies in their portal and decides to add one? How are calls to/from the database to be handled? Questions like these and many others needed to be answered and dealt with before and during the coding process. \\ Luckily for me, my team had started some of the necessary work making it easier for me to get to coding. For instance, my team already had created the Kafka producer and set up much of the infrastructure so I just had to work with it to do complete this task.
 
 \section{Design Approach and Architecture}
 To complete this task, I split the overall task into multiple subtasks to be completed:
@@ -18,6 +18,12 @@ To complete this task, I split the overall task into multiple subtasks to be com
 \end{itemize}
 
 I went with a top down approach initially when defining each of the individual components and fleshing out components as I went along. I decided to use this as I was sure there may be some hidden requirements that may arise during the coding process. Also, the top down approach to software engineering is much more requirements driven and was more in-line with clean code practices as I could avoid writing code I may not need. For some of the individual components, I did go with more of a bottom up approach like the kafka consumer, as this consumer could be reused for something elsewhere with some changes to the functionality. \newline \\ For the overall architecture, I went with one of the more common design patterns, the \textbf{Model-View-Controller (MVC)} system. I went with MVC due to the scalability it provides alongside the support for asynchronous techniques like Apache Kafka which is a major framework in use at HubSpot.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.7]{multicurrency/multi.png}
+  \caption{Flow Diagram of Architecture}
+\end{figure}
 
 \subsection{Model-View-Controller (MVC)}
 MVC is a common architecture pattern used in web based applications. MVC separates out the layers of business logic and data interactions(model) from the presentation(view) and intermediary between the two layers(controller). This pattern is so popular as it decouples each of the major aspects of the design from each other and is also highly scalable due to how modular the design is.
@@ -42,7 +48,6 @@ The controller layer is primarily responsible for processing user input.  A cont
   \includegraphics[scale=0.35]{multicurrency/mvc.jpg}
   \caption{Model-View-Controller overview}
 \end{figure}
-
 
 \section{Implementation}
 For the implementation of this task, it was split into multiple sub-tasks with each part being tested individually before the next part was created.
@@ -98,8 +103,11 @@ This code addition was also rather small,  all that was necessary was to create 
 Once all the parts of the consumer had been created,  testing the entire flow of the system became top priority.  Whilst each of the individual parts were unit tested and integration tested,  an end-to-end test of the entire system could only be done when the entire thing was assembled.  \newline \\ To test the entire system,  using Orion,  a branch deploy was done of the code base including this consumer to the staging environment.  Next,  all active Kafka consumers subscribed to this topic in staging were temporarily paused to test this change to prevent a flood of errors being sent in case the change had some bugs.  Finally,  testing was done using a test portal. \newline To begin testing,  I started with testing adding new multicurrencies.  To evaluate if the change worked,  I searched the logs for https requests and checked if they were going to the correct services.  Finally,  I checked the database to see if the new fields were added to the test portal.
 
 \subsection{Deployment}
-Deploying this change required 
-
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.7]{multicurrency/deployment.png}
+  \caption{Flow Diagram of Architecture}
+\end{figure}
 \subsection{Problems encountered}
 One issue I found while testing was I saw requests were not going to the correct services but were ending up somewhere completely different.  I initally checked my code to debug it but I couldn't seem to figure out what was going wrong.  Next I ran the kafka worker locally to find out what was wrong as I could debug it step by step as new requests came in, but again I couldn't figure out what was wrong.  I finally asked my Team Lead for assistance,  it turned out that because I was testing in Staging,  the route requests take is slightly different as there are 2 streams in Production to deal with all the traffic while in Staging there's only 1 as it's just for testing.  I was expecting the route of traffic to match Production but it turned out the testing was working as intended,  my assumptions were just wrong. 
 
