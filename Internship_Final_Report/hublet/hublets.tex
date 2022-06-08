@@ -1,0 +1,43 @@
+\chapter{2: Hublets}
+
+\section{Introduction}
+The second major task I worked on during my time at HubSpot was to write a task that would change the endpoints for all users who had Shopify connected to their portal. This change was part of a larger initiative at HubSpot to become GDPR compliant. To achieve this goal, an EU data centre was built alongside a whole new EU hublet being created (think of a hublet as a center of operations for all the products HubSpot offers). My team were responsible for getting our code base up to scratch in preparation for this so we were in 'Code Red' or maintenance mode. As a new member of the team, initially I was given the kafka consumer to focus on but I was asked to pivot to the hublet based work so we could move out of Code Red faster and move onto creating new features. \newline \\ This change wasn't very difficult to write but there was somewhat of a learning curve as I had to learn how jobs are written in HubSpot and how to test them before they go out to production. 
+
+\section{Design and Architecture}
+This job was classified as a 'Backfill Job'. What this meant is there was a standard set of operations that the job needed to perform . As this wasn't the first backfill job that my team had written, I could copy from another backfill job that was written and copy the overall architecture but edit the actual functionality. \newline \\ A backfill job is composed of 2 main components: \begin{itemize}
+\item Re-writing all old data to suit the new format
+\item Changing the code so all future data is written according to the new format
+\end{itemize}
+
+The task was split accordingly to the 2 sections outlined above.
+\section{Implementation}
+
+\subsection{Job Framework}
+To create the actual job framework, there's a standardized set of methods necessary. The main functions are \begin{itemize}
+\item Dry Run Option
+\item Argument Captors
+\item Run Option
+\end{itemize}
+
+When the job is first run, depending on the flags passed to the job, it either runs in dry run mode or a straight run through the job. A dry run is essentially a test of the job. The argument captors are there for any additional arguments that could be passed such as if there's a subset of portals you wish to test on. 
+
+\subsection{Technologies Used}
+\textbf{Blazar \cite{blazar-docs}} \newline Blazar is a continuous integration system used at HubSpot to build recently pushed code from Github. It automatically picks up new builds and runs all the tests it finds in the code base alongside checking the code for styling and linting also. One of the great things about Blazar is it just runs whatever new code was pushed, it doesn't re-build an entire repository if it's not necessary. 
+\subsection{Rewriting Old Data}
+To rewrite the old data, I wrote a filter to filter through all portals that had Shopify installed. From there I grabbed all the users webhooks by doing a get request to the database. Once I had grabbed a users webhooks, I replaced them with a new url that would hit a load balancer that would then in turn direct the traffic to the right webhook. 
+
+\subsubsection{Testing and Problems}
+To test this change, I wrote a unit test with some dummy portals and tested to see if the webhooks on the dummy portals with Shopify installed had their webhooks updated or not. It worked as intended so I moved on to the next section \newline \\ No real problems were encountered in this section as it was fairly straightforward to implement as I had an example job that did something similar in terms of database access so I had a good place to start from.
+
+\subsection{Refactoring Code for new format}
+The other section of this job was to refactor where webhooks are written so all new webhooks that are created have their webhooks pointing towards the load balancer. This change was very small to implement, all it required was an override in Orion for the webhooks base url as it was a config value that was configured when the service was first set up.
+
+\subsubsection{Testing and Changes}
+Testing this was fairly straightforward, all that was required was to create a new HubSpot user and install the Shopify app to their account. From there an assert on the database was done to see if the webhooks urls matched the new urls.
+
+\section{Evaluation and Testing}
+Once the job was completed, some test of the job were done locally using the dry run option. No weird behaviour was observed here so the code was then moved into Staging for further testing. Here we ran the job in it's entirety against 1 test portal to see if request from Shopify were getting through successfully. This seemed to work, then from there we shipped the change to Staging entirely.We monitored all portals in Staging but no real problems seemed to be occuring. \newline \\
+We then shipped the change to Production and ran the job against all portals in HubSpot. This took about 12 hours to complete. The day after the change had gone out, we noticed an up-tick in the number of 400's being returned from Shopify. Then a flood of tickets from customers came in complaining about Shopify data not syncing correctly. After spending about 30 minutes debugging with my team, we found out the change to the webhooks was causing the errors. There was a trailing space in the webhook URL that was causing them to fail somehow that the load balancer couldn't deal with. To quickly fix the webhooks for all the customers, another job was run that reset all the webhooks for customers to their previous state.\newline \\ The reason this bug wasn't found in testing was because it seemed that we were getting some sort of false positive while testing which made it look like things were working fine but actually weren't. It took us about a week after this to recover all the customers lost data and change the webhooks to point at the load balancer again following this bug. 
+
+\section{Analysis and Possible Changes}
+If I could change anything about how I approached this task, I would test the code much more vigorously. The trailing space was something that would be rather difficult to spot and even harder to diagnose if not for the expertise of my team mates. I would test on a larger subset of portals in Staging to avoid getting a false positive like this again. \newline I would also gate the roll-out of this change so that only a small subset of portals would receive this change to reduce the size of the impact in-case there was a bug in the code that made it to production. That way if something goes wrong only a few people are affected and this the clean up after the job is much easier and requires much less time to fix. 

@@ -46,8 +46,21 @@ The controller layer is primarily responsible for processing user input.  A cont
 \begin{figure}[ht]
   \centering
   \includegraphics[scale=0.35]{multicurrency/mvc.jpg}
-  \caption{Model-View-Controller overview}
+  \caption{Model-View-Controller overview \cite{mvc-pic}}
 \end{figure}
+
+\subsection{Technologies Used}
+\textbf{Apache Kafka \cite{kafka-docs}}
+Kafka is an event streaming software used to capture real time events from sources like cloud services in the form of streams which are then sent to other services as necessary. Kafka provides 3 main services: \begin{itemize}
+\item Publishing(write) and subscribe to (read) streams of events,
+\item Store streams of events for as long as necessary
+\item Process streams of events as they occur
+\end{itemize}
+
+Kafka works as a series of servers and clients communicating over TCP. An \textbf{event} records something that happened. A \textbf{Producer} writes events to Kafka while \textbf{Consumers} subscribe to these events. \newline Events are organised into \textbf{Topics} which any producer can write to and any consumer can subscribe to. Topics are partitioned i.e spread over a number of buckets located on different kafka brokers. This enables a high degree of scalability as producers and consumers can read from many brokers at once making sure there's no congestion on the network during high traffic times. Kafka also guarantees any consumer will read any event in a topic in the same order as they were written to the consumer. \newline \\
+
+\textbf{Singularity \cite{sing-docs}}
+Singularity is a platform that enables deploying and running services and scheduled jobs in the cloud or data centres. Singularity combines long-running tasks and job scheduling functionality all in one package to support many of the processes necessary to deploy every day modern web applications and services.  
 
 \section{Implementation}
 For the implementation of this task, it was split into multiple sub-tasks with each part being tested individually before the next part was created.
@@ -105,9 +118,18 @@ Once all the parts of the consumer had been created,  testing the entire flow of
 \subsection{Deployment}
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.7]{multicurrency/deployment.png}
+  \includegraphics[scale=0.5]{multicurrency/deployment.png}
   \caption{Flow Diagram of Architecture}
 \end{figure}
+
+According to the above flowchart, deploying new features is a fairly straightforward process. There's a few steps involved before code can be pushed to master: 
+\begin{itemize}
+\item The code is first pushed to GitHub
+\item All tests are ran on the code in Blazar, the in-house testing automation software that runs all the tests and checks the code for code-style errors and such.
+\item Following this, once all the test pass, the code can then be deployed via Orion, the deployment software we use to manage different deployments. Before code can be deployed to Production, it's usually first deployed to Staging to be monitored over the course of a few days to make sure no unknown behaviours occur. Specific branches of code can also be deployed to Staging, to be tested and such.
+\item Once everything looks good in Staging, the code is then pushed to Production. Depending on the change, we may gate how many people receive the change initially and monitor those portals and then as we feel more confident, roll-out the change to more and more people. 
+\item Finally, Singularity is the software we use for running and scheduling tasks like the kafka consumer. From here we can create and kill tasks as necessary and there's also auto-scaling software in place. When any sort of code is deployed in Orion, Singularity is what creates the micro-services and actually runs the code and manages it over its lifetime. 
+\end{itemize}
 \subsection{Problems encountered}
 One issue I found while testing was I saw requests were not going to the correct services but were ending up somewhere completely different.  I initally checked my code to debug it but I couldn't seem to figure out what was going wrong.  Next I ran the kafka worker locally to find out what was wrong as I could debug it step by step as new requests came in, but again I couldn't figure out what was wrong.  I finally asked my Team Lead for assistance,  it turned out that because I was testing in Staging,  the route requests take is slightly different as there are 2 streams in Production to deal with all the traffic while in Staging there's only 1 as it's just for testing.  I was expecting the route of traffic to match Production but it turned out the testing was working as intended,  my assumptions were just wrong. 
 
